@@ -1,0 +1,154 @@
+<header class="ui-header ui-header-css ui-header-positive ui-border-b">
+    <h1 class="ui-txt-default name">同城夺宝</h1>
+</header>
+<div class="dm-detail">
+        <div class="dm_detail_contain">
+            <div class="title name invit_award_name">胖子猿</div>
+            <div class="title">送你一个随机红包</div>
+            <div class="details">输入你的手机号，并下载“同城夺宝”应用程序完成注册，注册完成后送你一张随机金额的红包。</div>
+
+            <span class="spans_block user_account">
+                <input type="" name="" maxlength="11" class="award_input" placeholder="输入手机号" onkeyup="this.value=this.value.replace(/\D/g,'')">   
+
+            </span>
+            <span class="spans_block confirm_receive" style="display:none">
+                确认领取
+            </span>
+            <span class="spans_block dowload-type no-award-dowload">
+                下载同城夺宝APP
+            </span>
+        </div>
+    
+</div>
+
+<style type="text/css">
+    #invitAward-page .dm-detail{
+        position: fixed;
+        top: 46px; 
+        /* left: 0px; */
+        width: 100%;
+        height: 100%;
+        /* z-index: 9999; */
+        display: -webkit-box;
+        /* -webkit-box-orient: horizontal; */
+        /* -webkit-box-pack: center; */
+        /* -webkit-box-align: center; */
+        /* background: rgba(0, 0, 0, 0.4); */
+        background: url(assets/image/new/beijing@2x.png) no-repeat;
+        background-size: 100% 100%;
+        display: -webkit-box;
+    }
+
+    #invitAward-page .dm_detail_contain{
+        border-radius: 10px;
+        width: 80%;
+        height: 74%;
+        position: relative;
+        font-size: 16px;
+        color: white;
+        margin: 54px 10%;
+       /* background-color: red;*/
+    }
+
+
+    #invitAward-page .dm_detail_contain .title{
+        font-size: 16px;
+        /*text-align: center;*/
+        padding-left: 38%;
+        color: weight;
+        font-weight: bolder;
+    }
+
+    #invitAward-page .dm_detail_contain .name{
+        margin-top: 20vw;
+        font-size: 26px;
+    }
+
+    #invitAward-page .dm_detail_contain .details{
+        margin-top:24vw;
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    #invitAward-page .spans_block{
+        display: block;
+    }
+
+    #invitAward-page .dm_detail_contain .user_account{
+        
+        height: 36px;
+        margin: 0 8%;
+        margin-top: 20px;
+    }
+
+    #invitAward-page .dm_detail_contain .confirm_receive{
+        height: 36px;
+        margin: 30px 20%;
+        width: 60%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: black;
+        background-color: #b81c1c;
+    }
+
+    #invitAward-page .dm_detail_contain .award_dowload{
+        margin: 32px 10%;
+        width: 80%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: black;
+        font-weight: bolder;
+        opacity: 0.9;
+        background-color: #f2e57c;
+    }
+
+    #invitAward-page .dm_detail_contain .award_input{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: 0;
+        padding: 0 8px;
+        outline: 0;
+        line-height: normal;
+        text-align: center;
+        /*-webkit-user-modify: read-write-plaintext-only;*/
+    }
+
+
+    #invitAward-page .dm_detail_contain .contain{
+        margin-top:23px;
+        margin-left: 30px;
+    }
+
+    #invitAward-page .detail_but{
+        position: absolute;
+        bottom:50px;
+    }
+
+    #invitAward-page .no-award-dowload{
+        background-color: #e6e6e6 !important;
+        color: #cccccc !important;
+    }
+
+    #invitAward-page .dowload-type{
+        margin: 32px 10%;
+        width: 80%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: black;
+        font-weight: bolder;
+        opacity: 0.9;
+    }
+
+
+
+</style>

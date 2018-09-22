@@ -1,0 +1,2 @@
+[Tue Dec 27 2016 19:29:33 GMT+0800 (中国标准时间)] layer "1.head2": Unsupported extension: head
+[Tue Dec 27 2016 19:29:33 GMT+0800 (中国标准时间)] layer "1.head2": Invalid quality: 20

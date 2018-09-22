@@ -1,0 +1,61 @@
+
+
+.ydb-back-img{
+	width: 100%;
+	height:100%;
+	background: url(./img/beijing.png) no-repeat;
+}
+
+.ydb-contain{
+    width: 70%;
+    margin:auto;
+}
+
+.ydb-contain .phone-left{
+	float: left;
+    height: 855px;
+    width: 38%;
+    background: url(./img/shouji.png) no-repeat;
+    margin-top: 4%;
+}
+
+.ydb-contain .dowload-right{
+	float:right;
+	height: 666px;
+    width: 44%;
+	margin-right: 10%;
+	margin-top: 20%;
+}
+.ydb-contain .dowload-right h1{
+	text-align: center;
+}
+.ydb-contain .dowload-right span{
+	text-align: center;
+}
+
+.ydb-contain .dowload-right h1 img{
+	width: 383px;
+}
+
+.ydb-contain .dowload-right span img{
+	width: 238px;
+    height: 57px;
+}
+
+.ydb-contain .dowload-right .dowload-contain{
+	margin: 0px auto;
+}
+
+.ydb-contain .andr-ios{
+	padding: 0px 116px;
+	line-height: 40px;
+}
+
+.ydb-contain .qr-code{
+	position: absolute;
+	margin-left: 10px;
+	width: 118px;
+    height: 118px;
+	float: right;
+    margin-top: -67px;
+}

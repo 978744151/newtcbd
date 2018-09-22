@@ -1,0 +1,195 @@
+<!--<header class="ui-header ui-header-css ui-header-positive ui-border-b">
+    <h1 class="ui-txt-default name">同城夺宝</h1>
+</header>-->
+<div class="dm-detail">
+        <div class="dm_detail_contain">
+            <!--<div class="title name invit_award_name">胖子猿</div>-->
+            <div class="invitBg">
+            	<img style="margin-top: -15px;" src="assets/image/invit-bg.png">
+            </div>
+            <div class="invit-goods">
+            	<p class="invit-desc">“<span> 1 </span>”元拿下</p>
+            	<ul class="invit-goods-list">
+            		
+            	</ul>
+            </div>
+            <div class="oauth-open-btn">微信授权打开APP</div>
+        </div>
+    
+</div>
+
+<script id="invitOauth-item" type="text/template">
+	<%
+	if(data && data.length > 0) {
+	_.each(data,function(item){
+	%>
+	<li class="invit-goods-item">
+		<div class="goods-pic">
+			<img src="../../assets/image/icon/ico_public_shoppingcart@2x.png" data-echo="<%=item.thumb%>">
+		</div>
+		<p class="goods-desc"><%=item.name%></p>
+	</li>
+	<% });
+	}%>
+</script>
+
+<style type="text/css">
+    #invitOauth-page .dm-detail{
+        position: absolute;
+        top: 0px; 
+        /* left: 0px; */
+        width: 100%;
+        height: 100%;
+        /* z-index: 9999; */
+        display: -webkit-box;
+        background: #fff;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #invitOauth-page .invitBg{
+        width: 100%;
+        height: auto;
+    }
+    #invitOauth-page .invitBg>img{
+    	display: block;
+    	width: 100%;
+    	height: auto;
+    }
+
+
+    #invitOauth-page .invit-desc{
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: 4px;
+        padding: 15px 0;
+       
+    }
+    #invitOauth-page .invit-desc>span{
+    	color: #f53658;
+    }
+
+    #invitOauth-page .invit-goods-list{
+        display: flex;
+    }
+    #invitOauth-page .invit-goods-list li{
+    	flex: 1;
+    	border-right: 1px solid #efefef;
+    	position: relative;
+    	right: -1px;
+    	text-align: center;
+    }
+    .goods-pic{
+    	width: 100%;
+    	height: auto;
+    }
+    .goods-pic img{
+    	display: block;
+    	width: 100%;
+    	height: auto;
+    }
+    .goods-desc{
+    	font-size: 12px;
+    	line-height: 1.5;
+    	padding-top: 6px;
+    }
+    .oauth-open-btn{
+    	width: 92%;
+    	margin: 4vh auto 15px;
+    	height: 40px;
+    	border-radius: 5px;
+    	background: -webkit-linear-gradient(left, #e93596 , #f73557);
+    	color: #fff;
+    	line-height: 40px;
+    	text-align: center;
+    	
+    }
+
+    #invitOauth-page .dm_detail_contain .details{
+        margin-top:24vw;
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    #invitOauth-page .spans_block{
+        display: block;
+    }
+
+    #invitOauth-page .dm_detail_contain .user_account{
+        
+        height: 36px;
+        margin: 0 8%;
+        margin-top: 20px;
+    }
+
+    #invitOauth-page .dm_detail_contain .confirm_receive{
+        height: 36px;
+        margin: 30px 20%;
+        width: 60%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: black;
+        background-color: #b81c1c;
+    }
+
+    #invitOauth-page .dm_detail_contain .award_dowload{
+        margin: 32px 10%;
+        width: 80%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: black;
+        font-weight: bolder;
+        opacity: 0.9;
+        background-color: #f2e57c;
+    }
+
+    #invitOauth-page .dm_detail_contain .award_input{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: 0;
+        padding: 0 8px;
+        outline: 0;
+        line-height: normal;
+        text-align: center;
+        /*-webkit-user-modify: read-write-plaintext-only;*/
+    }
+
+
+    #invitOauth-page .dm_detail_contain .contain{
+        margin-top:23px;
+        margin-left: 30px;
+    }
+
+    #invitOauth-page .detail_but{
+        position: absolute;
+        bottom:50px;
+    }
+
+    #invitOauth-page .no-award-dowload{
+        background-color: #e6e6e6 !important;
+        color: #cccccc !important;
+    }
+
+    #invitOauth-page .dowload-type{
+        margin: 32px 10%;
+        width: 80%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: black;
+        font-weight: bolder;
+        opacity: 0.9;
+    }
+
+
+
+</style>

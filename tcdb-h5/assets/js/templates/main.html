@@ -1,0 +1,322 @@
+<div class="index_yy">
+	<div class="index_box">
+		<div class="index_box_img">
+			<img src="../../../assets/image/ic_popo3.png" alt="">
+		</div>
+		<div class="index_box_button">
+			<button>GO!</button>
+		</div>
+		<div  class="index_box_close">
+			<img src="../../../assets/image/ic_close@3x.png" alt="" >
+		</div>
+	</div>
+</div>
+<div class="main-css">
+	<div style="height:91px;width: 90%;border-radius: 6px;" class="mui-scroll-wrapper indexCate mui-slider-indicatorcode mui-segmented-control mui-segmented-control-inverted">
+		<ul  style="height:91px;" class="ui-row ui-txt-center ui-border-b f12 tab_bar_cate mui-scroll ">
+
+			<!--<li class="ui-col ui-col-25 ui-txt-line-height-30 "-->
+			<!--data-id="categoryId" text-tap>-->
+			<!--<div class="ui-icon">-->
+			<!--<img src="../../assets/image/index/ico_index_dream@2x.png">-->
+			<!--</div>-->
+			<!--<div class="ui-txt-default">梦想转盘</div>-->
+			<!--</li>-->
+		</ul>
+	</div>
+		<!--<header class="ui-header ui-header-positive ui-border-b">-->
+				<!--<i class="ui-icon-search good_search"></i>-->
+				<!--<h1>-->
+					<!--同城夺宝	-->
+				<!--</h1>-->
+				<!--<i class="icon_message"></i>-->
+		<!--</header>-->
+		<section class="ui-container main_contain" style="float: left;width:100%;">
+
+
+		</section>
+</div>
+
+<script id="main_item" type="text/template">
+		<!--<section class="bg_white" style="margin-top:5px">-->
+
+
+			<!--<div class="ui-justify ui-whitespace">-->
+
+						<!--<ul class="ui-row ui-txt-center ui-border-b f12">-->
+
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap ydb-active">推荐</div>-->
+								<!--</li>-->
+
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">手机平板</div>-->
+								<!--</li>-->
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">电脑办公</div>-->
+								<!--</li>-->
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">数码影音</div>-->
+								<!--</li>-->
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">女性时尚</div>-->
+								<!--</li>-->
+						<!--</ul>-->
+				<!--</div>-->
+		<!--</section>-->
+
+			<!--<div class="ui-justify ui-whitespace">-->
+
+						<!--<ul class="ui-row ui-txt-center ui-border-b f12">-->
+
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap ydb-active">推荐</div>-->
+								<!--</li>-->
+
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">手机平板</div>-->
+								<!--</li>-->
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">电脑办公</div>-->
+								<!--</li>-->
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">数码影音</div>-->
+								<!--</li>-->
+								<!--<li class="ui-col ui-col-20 ui-txt-line-height-30"-->
+										<!--&gt;-->
+										<!--<div class="ui-txt-default text-tap">女性时尚</div>-->
+								<!--</li>-->
+						<!--</ul>-->
+				<!--</div>-->
+			<!--<li class="ui-col ui-col-25 ui-txt-line-height-30 "-->
+				<!--data-href="wheelprize">-->
+				<!--<div class="ui-icon">-->
+					<!--<img src="../../assets/image/index/ico_index_dream@2x.png">-->
+				<!--</div>-->
+				<!--<div class="ui-txt-default">梦想转盘</div>-->
+			<!--</li>-->
+
+			<!--<li class="ui-col ui-col-25 ui-txt-line-height-30"-->
+				<!--data-href="pkShow">-->
+				<!--<div class="ui-icon">-->
+					<!--<img src="../../assets/image/index/ico_index_product@2x.png">-->
+				<!--</div>-->
+				<!--<div class="ui-txt-default">PK秀场</div>-->
+			<!--</li>-->
+
+			<!--<li class="ui-col ui-col-25 ui-txt-line-height-30"-->
+				<!--data-href="share">-->
+				<!--<div class="ui-icon">-->
+					<!--<img src="../../assets/image/index/ico_index_shaidan@2x.png">-->
+				<!--</div>-->
+				<!--<div class="ui-txt-default">晒单</div>-->
+			<!--</li>-->
+
+			<!--<li class="ui-col ui-col-25 ui-txt-line-height-30"-->
+				<!--data-href="sign">-->
+				<!--<div class="ui-icon">-->
+					<!--<img src="../../assets/image/index/ico_index_signin@2x.png">-->
+				<!--</div>-->
+				<!--<div class="ui-txt-default">签到</div>-->
+			<!--</li>-->
+		<!--</section>-->
+
+		<section class="mxep_block bg_white">
+
+				<div class="swiper-container banner_img_list">
+						<div class="swiper-wrapper">
+								<%
+								if(carouses && carouses.length > 0) {
+								_.each(carouses,function(item){
+
+								%>
+								<div class="swiper-slide" data-href="<%=item.link%>">
+
+			                        <span>
+			                            <img src="../../assets/image/icon/ico_public_shoppingcart@2x.png" data-echo="<%=item.pic%>">
+			                        </span>
+
+								</div>
+								<%});
+								}%>
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination" style="bottom:50px;"></div>
+						<!-- 如果需要导航按钮 -->
+						<!--<div class="swiper-button-prev"></div>-->
+						<!--<div class="swiper-button-next"></div>-->
+						<!-- 如果需要滚动条 -->
+						<!--<div class="swiper-scrollbar"></div>-->
+
+				</div>
+
+				<div class="ui-justify ui-whitespace" style="display: none">
+
+
+
+						<div class="ui-row  bonus_record_list_container" >
+								<i class="icon">
+									<img src="../../assets/image/index/ico_index_speaker@2x.png">
+								</i>
+				<!--活动 active-->
+								<ul class="bonus_record_list ">
+										<%
+										if(rewards && rewards.length > 0) {
+										_.each(rewards,function(item){
+
+										%>
+										<li class="ui-nowrap ui-whitespace">
+												<span>恭喜</span>
+												<span class="user_nickname"><%=item.nickname%></span>
+												<span>获得</span>
+												<span class="prize_name">
+													<%=item.auction_name%>
+												</span>
+										</li>
+										<%});
+										}%>
+
+								</ul>
+						</div>
+
+				</div>
+
+		</section>
+
+		<section class="mxep_block mxep_block_bottom duobao_container" style="font-size: 0.9em;">
+
+				<div class="ui-row ui-whitespace ui-txt-center ui-txt-line-height-50 bg_white
+             announced_type_list">
+
+                <span class="ui-col ui-col-25  active hot" data-type="1" data-direction="1">
+							 Popular
+					</span>
+                </span>
+
+                <span class="ui-col ui-col-25 new" data-type="2" data-direction="1">
+                    latest
+					</span>
+                </span>
+
+                <span class="ui-col ui-col-25 program" data-type="3" data-direction="1">
+                    program
+					</span>
+                </span>
+
+                <!--<span class="ui-col ui-col-25 icon_img_4" data-type="4" data-direction="2">-->
+                    <!--总需-->
+										<!--<span class="icon_sort">-->
+												<!--<i class="sort_up"></i>-->
+												<!--<i class="sort_down"></i>-->
+										<!--</span>-->
+                <!--</span>-->
+
+				</div>
+
+				<ul class="ui-grid-halve announced_good_list" style="padding: 0;">
+						<%
+						if(auctions && auctions.data.length > 0) {
+						_.each(auctions.data,function(item){
+						var percentage = (item.sale_count/item.target*100).toFixed(0) + "%";
+						%>
+						<li class="" data-id="<%=item.id%>">
+								<div class="bg_white ui-grid-item" data-id="<%=item.id%>">
+
+										<div class="ui-grid-trisect-img">
+												<img src="../../assets/image/icon/ico_public_shoppingcart@2x.png" data-echo="<%=item.thumb%>">
+												<span class="ui-txt-center f18 ui-txt-white ui-txt-bold special_offer_area "><%=item.label%></span>
+										</div>
+
+										<div class="ui-txt-line-height-30 ui-nowrap-multi ui-whitespace good_name" >
+												<%=item.name%>
+										</div>
+
+										<div class="good_process">
+												<div class="ui-row ui-txt-line-height-25 f14">
+														<span class="ui-txt-muted">揭晓进度</span>
+														<span class="ui-txt-red-1" data-process="50"><%=percentage%></span>
+												</div>
+												<div class="ui-progress">
+														<span style="width:<%=percentage%>"></span>
+												</div>
+										</div>
+
+										<div class="icon_shopping_cart add_to_shopping_cart">
+												<span>GO</span>
+										</div>
+
+								</div>
+						</li>
+						<% });
+						}%>
+
+				</ul>
+
+		</section>
+
+</script>
+<script id="announced_good_item" type="text/template">
+
+		<%
+		if(data && data.length > 0) {
+		_.each(data,function(item){
+		var percentage = (item.sale_count/item.target*100).toFixed(0) + "%";
+		%>
+		<li class="" data-id="<%=item.id%>">
+				<div class="bg_white ui-grid-item" data-id="<%=item.id%>">
+
+						<div class="ui-grid-trisect-img">
+								<img src="../../assets/image/icon/ico_public_shoppingcart@2x.png" data-echo="<%=item.thumb%>">
+
+								<%
+								if(item.label=="一元商品"){
+								%>
+
+								<%
+								}
+								else if(item.label=="十元商品"){
+								%>
+								<span class="ui-txt-center f18 ui-txt-white ui-txt-bold special_offer_area ten_area"><%=item.label%></span>
+								<%
+								}
+								else if(item.label=="百元商品"){
+								%>
+								<span class="ui-txt-center f18 ui-txt-white ui-txt-bold special_offer_area "><%=item.label%></span>
+								<%
+								}
+								%>
+
+						</div>
+
+						<div class="ui-txt-line-height-30 ui-nowrap-multi ui-whitespace good_name">
+								<%=item.name%>
+						</div>
+
+						<div class="good_process">
+								<div class="ui-row ui-txt-line-height-25 f14">
+										<span class="ui-txt-muted">揭晓进度</span>
+										<span class="ui-txt-red-1" data-process="50"><%=percentage%></span>
+								</div>
+								<div class="ui-progress">
+										<span style="width:<%=percentage%>"></span>
+								</div>
+						</div>
+
+						<div class="icon_shopping_cart add_to_shopping_cart">
+							<span>GO</span>
+						</div>
+
+				</div>
+		</li>
+		<% });
+		}%>
+</script>

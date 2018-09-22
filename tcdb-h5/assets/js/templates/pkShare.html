@@ -1,0 +1,292 @@
+<!--<header class="ui-header ui-header-css ui-header-positive ui-border-b">
+    <h1 class="ui-txt-default name">同城夺宝</h1>
+</header>-->
+<div class="ydb-contain">
+    
+    
+    
+
+    
+</div>
+<script id="pkShare-item" type="text/template">
+	<section style="margin-bottom: 10px; border-top: 1px solid #e9e9e9;">
+        <div class="creater-info">
+            <!-- <img src="assets/image/new/share.jpg"> -->
+            <img src="assets/image/sign/img_sign_red@2x.png" data-echo="<%=avatar%>" >
+            <div class="info">
+                <p>
+                    <span class="ydb-fontcolor ydb-opacity">
+                        <span>PK房号：</span><span><%=room_sn%></span>
+                        <br>
+                        <span>创建人：</span><span><%=member_name%></span>
+                        <br>
+                        <span>PK状态：</span><span><%=status_name%></span>
+                        <br>
+                        <span>创建时间：</span><span><%=create_time%></span>
+                    </span>
+                </p>
+            </div>
+        </div>       
+    </section>
+    <section class="bg_white">
+        <div class="goods-info">
+            <div class="goods">
+            	<div class="goods-pic">
+            		<img src="assets/image/sign/img_sign_red@2x.png" data-echo="<%=goods_thumb%>" >
+            	</div>
+                
+                <div class="good-name">
+                    <p>
+                        <span  class="ydb-opacity ydb-fontcolor">
+                            <span class="ydb-nowrap"><%=goods_name%></span>                                 
+                        </span>
+                    </p>
+
+                   
+                </div>
+            </div>
+             <div class="ui-row" data-status="">
+
+                <div class="ui-row announced_status ydb-padd-auto">
+
+                        <div class="ui-row ui-margin-b ui-txt-line-height-25 ui-txt-bold unit_price"
+                                 data-unit_price="10">
+                                <span style="color:#f23668"><%=step%></span>
+                                <span class="ydb-opacity">同城币/人次</span>
+                        </div>
+
+                        <!-- <div class="ui-row f14 ui-txt-line-height-30">
+                                <span>本期期号：</span>
+                                <span class="current_announced_no">
+                                        <%=auction_id%>
+                                </span>
+                        </div> -->
+
+                        <div class="ui-row announced_process_container">
+                        	<div class="ui-progress">
+                                    <%
+                                        var percent=(target-remain)/target*100+"%";
+                                    %>
+                                    <span style="width:<%=percent%>"></span>
+                            </div>
+                        </div>
+                        <div class="ui-row f14 ui-txt-line-height-30 participant_container" style="color:#666666">
+                                <span class="total_participant" data-count="">
+                                        总需
+                                        <%=target%>
+                                        人次
+                                </span>
+                                <span class="f_right surplus_participant" data-count="<%=remain%>">
+                                        剩余
+                                        <b style="color: #f23668;"><%=remain%>人次</b>
+                                </span>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+		<div class="pk-oauth-btn">微信授权打开“同城夺宝”APP</div>
+        
+    </section>
+</script>
+<style type="text/css">
+    .ydb-contain{
+        /*padding-top: 45px;*/
+    }
+
+    .ydb-opacity{
+        
+        opacity: 0.8;
+    }
+
+    .ydb-fontcolor{
+        color:#000;
+    }
+
+    /*.ydb-contain section:first-child{*/
+    .ydb-contain section{
+        font-size: 14px;
+        padding: 10px 15px;
+        background-color: white;
+        
+    }
+
+    .ydb-contain .creater-info{
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .ydb-contain .creater-info .info{
+        margin-left: 15px;
+    }
+
+    .ydb-contain .creater-info img{
+        /*width: 25px;
+        height: 25px;*/
+        width: 56px;
+        height: 56px;
+        border-radius: 56px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 56px;
+    }
+
+    .ydb-contain .creater-info p{
+        font-size: 14px;
+        display: flex;
+    }
+
+    .ydb-contain .default-info{
+        background-color: #fff;
+        padding: 10px 15px;
+        margin-top: 15px;
+        font-weight: bold
+    }
+
+    .ydb-contain .default-info .title{
+        text-align: center;
+        color: red;
+        font-size: 24px;
+    }
+
+    .ydb-contain .default-info .message{
+        margin-top:5px;
+        font-size: 14px;
+
+    }
+
+    .spans_block{
+        display: block;
+    }
+
+    .ydb-contain .user_account{
+        
+        height: 36px;
+        margin-top:10px;
+    }
+
+    .ydb-contain .award_input{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: 1px solid #e9e9e9;
+        padding: 0 8px;
+        outline: 0;
+        text-align: center;
+        line-height: normal;
+        border-radius: 5px;
+        opacity: 0.9;
+    }
+
+    .ydb-contain .confirm_receive{
+        height: 36px;
+        margin: 30px 20%;
+        width: 60%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: black;
+        background-color: #b81c1c;
+    }
+
+    .ydb-contain .award_dowload{
+        margin: 30px 10%;
+        margin-bottom: 0px;
+        width: 80%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: white;
+        background-color: #ff3300;
+    }
+
+    .ydb-contain .goods-info{
+            background-color: #fff;
+            margin-top:11px;
+        }
+
+    .ydb-contain .ydb-padd-auto{
+        /*padding: 0px 15px;*/
+       padding-top: 13px;
+    }
+    .ydb-contain .ydb-padd-auto .ui-txt-bold{
+    	font-weight: normal;
+    	color: #000;
+    	margin-bottom: 6px;
+    }
+    .ydb-contain .ydb-padd-auto .ui-progress{
+    	height: 10px;
+    	border: 1px solid #e1e1e1;
+    	background: #fff;
+    	border-radius: 5px;
+    }
+    .ydb-contain .ydb-padd-auto .ui-progress>span{
+    	background: #f23668;
+    	border-radius: 4px;
+    }
+
+    .ydb-contain .goods-info .goods{
+        display: flex;
+    }
+
+    .ydb-contain .goods-info .goods .goods-pic{
+        width: 65px;
+        height:65px;
+        border: 1px solid #e1e1e1;
+        padding: 5px;
+    }
+    .ydb-contain .goods-info .goods .goods-pic img{
+    	display: block;
+    	width: 100%;
+    	height: 100%;
+    }
+
+    .ydb-contain .goods-info .good-name{
+        font-size: 14px;
+        padding: 6px 15px;
+        padding-bottom: 1px;
+        flex: 1;
+        /*font-weight: bold;*/
+        font-size: 14px;
+        color: #000;
+        /* background-color: #fffaf7; */
+        /*border-top: 1px solid #e9e9e9;*/
+    }
+    .ydb-nowrap{
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        opacity: 0.9;
+    }
+
+    #pkShare-page .no-award-dowload{
+        background-color: #e6e6e6 !important;
+        color: #cccccc !important;
+    }
+
+    #pkShare-page .dowload-type{
+        margin: 30px 10%;
+        margin-bottom: 0px;
+        width: 80%;
+        height: 36px;
+        border-radius: 5px;
+        line-height: 36px;
+        text-align: center;
+        color: white;
+        background-color: #ff3300;
+    }
+    .pk-oauth-btn{
+    	width: 100%;
+    	margin: 35px auto 15px;
+    	height: 40px;
+    	border-radius: 5px;
+    	background: -webkit-linear-gradient(left, #e93596 , #f73557);
+    	color: #fff;
+    	line-height: 40px;
+    	text-align: center;
+    }
+</style>

@@ -1,0 +1,70 @@
+body,
+html {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(-136deg, #FF7400 0%, #E75308 100%);
+}
+.container {
+  width: 100%;
+  height: 100%;
+  padding-top: 15px;
+}
+.container .login_header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.container .login_header i {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  font-size: 36px;
+  font-weight: 700;
+  top: -3px;
+}
+.container .login_header h1 {
+  font-family: PingFang-SC-Medium;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+.container .loginBody .login_logo {
+  width: 174px;
+  height: 123px;
+  margin: 100px auto;
+}
+.container .loginBody .login_logo img {
+  width: 100%;
+  height: 100%;
+}
+.container .loginBody .login_bottom {
+  position: absolute;
+  bottom: 20%;
+  text-align: center;
+  width: 100%;
+}
+.container .loginBody .loginWidth {
+  display: flex;
+  justify-content: center;
+}
+.container .loginBody .loginWidth span {
+  height: 1px;
+  width: 100px;
+  display: block;
+  margin-top: 10px;
+  opacity: 0.6;
+  background: #D8D8D8;
+}
+.container .loginBody .loginWidth p {
+  color: white;
+  font-size: 14px;
+  padding: 0px 10px;
+}
+.container .loginBody .loginDl {
+  display: flex;
+  justify-content: space-around;
+}
+.container .loginBody .loginDl img {
+  width: 56px;
+  height: 56px;
+}

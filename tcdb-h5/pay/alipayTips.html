@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        border: 0px currentColor;
+        text-align: left;
+        font-style: normal;
+        font-weight: normal;
+        -webkit-tap-highlight-color: #000;
+        -webkit-touch-callout: none;
+    }
+
+    body {
+        font-size: 14px;
+        font-family: 'microsoft yahei', Verdana, Arial, Helvetica, sans-serif;
+        text-align: center;
+        background: #ffffff;
+        min-width: 320px;
+        max-width: 640px;
+    }
+
+    .alipay_tips {
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        background: #000;
+        z-index: 19;
+        width: 100%;
+        height: 100%;
+        position: fixed
+    }
+
+    .alipay_tips .nr {
+        height: 300px;
+        width: 80%;
+        margin: 40px auto;
+    }
+
+    .alipay_tips .nr img {
+        width: 100%;
+    }
+
+    .alipay_tips .fx {
+        width: 90%;
+        margin: 80px auto;
+        text-align: center;
+        position: absolute;
+        bottom: 40px;
+    }
+
+    .alipay_tips .fx img {
+        width: 60%;
+    }
+</style>
+<script src="../assets/js/libs/zepto.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    $(function() {
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        if (isWeiXin()) {
+            $(".alipay_tips").show();
+        } else {
+            var url = location.href;
+            console.info(url);
+            var redirectUrl = url.substring(url.indexOf("redirectUrl") + 12);
+            window.location.href = redirectUrl;
+        }
+    });
+</script>
+<div class="alipay_tips" style="position: fixed; z-index:10; display: none">
+    <div class="nr"><img src="../assets/image/alipay_tips.png" /></div>
+    <div class="fx"><img src="../assets/image/btn_know.png"/></div>
+</div>
+</body>
+</html>
+

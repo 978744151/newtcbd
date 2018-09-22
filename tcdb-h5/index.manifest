@@ -1,0 +1,16 @@
+CACHE MANIFEST
+#version 1.0.2
+
+CACHE:
+	assets/css/public/common.css
+	assets/css/public/background.css
+	assets/css/public/font.css
+	*/assets/*
+
+NETWORK:
+	*/index.html
+	*/index.manifest
+	
+	*/assets/js/*	
+	*/require.min.js
+	*

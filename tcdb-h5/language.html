@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #main-language{
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+
+        }
+        .languageBox{
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+        .languageBox .languageTop{
+            width: 100%;
+            height: 250px;
+            background-image: linear-gradient(-136deg, #FF7400 0%, #E75308 100%);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .languageBox .languageTop img{
+            height: 123px;
+            margin-top: 30px;
+        }
+        .languageBox .languageTop h4{
+            position: absolute;
+            top: 15px;
+            color: white;
+        }
+        .languageBox .languageBottom div{
+            width: 260px;
+            height: 80px;
+            background-color: #fff;
+            color: black;
+            font-size: 16px;
+            text-align: center;
+            line-height: 80px;
+            margin: auto;
+            border-radius: 100px;
+            border: 1px solid #D0D0D0;
+            margin-top: 20px;
+        }
+        .languageBox .languageBottom div.active{
+            width: 260px;
+            height: 80px;
+            background-color: #FF7400;
+            color: #ffffff;
+            font-size: 16px;
+            text-align: center;
+            line-height: 80px;
+            margin: auto;
+            border-radius: 100px;
+            /*border: 1px solid #D0D0D0;*/
+            margin-top: 20px;
+        }
+        .languageBox .languageGo{
+            width: 100px;
+            height: 100px;
+            background-color: #FF7400;
+            text-align: center;
+            line-height: 100px;
+            margin: auto;
+            border-radius: 50%;
+            margin-top: 50px;
+            font-family: PingFang-SC-Medium;
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div class="languageBox">
+        <div class="languageTop">
+            <h4>Choice of language</h4>
+            <img src="../../../assets/image/ic_logo@3x.png" alt="">
+        </div>
+        <div class="languageBottom">
+            <div class="active English">
+                <span>English</span>
+            </div>
+            <div class="tai">
+                <span>ภาษาไทย</span>
+            </div>
+        </div>
+        <div class="languageGo">
+            <span>GO</span>
+        </div>
+    </div>
+</section>
+<script src="assets/js/libs/zepto.min.js"></script>
+<script>
+$(function () {
+    window.ctx =  "http://localhost:801";
+    languageBottom()
+    function languageBottom() {
+        $('.languageBottom div').on('tap', function () {
+            console.log($(this));
+            var $this = $(this);
+            $this.addClass('active').siblings().removeClass('active')
+        })
+        $('.languageGo').on('tap', function () {
+            var english = $(".English"),
+                    tai = $('.tai')
+            if(english.hasClass('active')){
+                localStorage.setItem('lan',1)
+            }else{
+                localStorage.setItem('lan',2)
+            }
+            window.location.href = window.ctx + '#main';
+
+        })
+    }
+})
+
+
+</script>
+</body>
+</html>
