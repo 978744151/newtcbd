@@ -22,7 +22,8 @@ define(['zepto', 'underscore', 'backbone', 'dropload',
                 comId = id;
                 utils.showPage($page, function() {
                     $page.empty().append(addressManageTemplate);
-
+                    var type = utils.getStor()
+                    $('.name').html(lan(type).mainPage.delivery)
                    $pageNum = 1;//页码
                    $pageSize =2;//每页记录数
                    $addressListContainer = $page.find(".user_address_list");

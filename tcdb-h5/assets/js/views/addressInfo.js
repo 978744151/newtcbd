@@ -56,7 +56,7 @@ define(['zepto', 'underscore', 'backbone',
 			},
 			events: {
 				//保存地址
-				"tap .btn_save": "saveAddresses",
+				"touchend .btn_save": "saveAddresses",
 				// 更新城市列表
 				"change #provinceId": "updateCity",
 				// 更新区列表
@@ -64,10 +64,11 @@ define(['zepto', 'underscore', 'backbone',
 				// 点击默认状态
 				'tap .ui-switch input': 'toggleDefault',
 				// 删除地址
-				'tap .btn_del': 'deleteAddress'
+				'touchend .btn_del': 'deleteAddress'
 			},
 
-			saveAddresses: function () {
+			saveAddresses: function (e) {
+				e.preventDefault();
 				//验证信息
 				if (!verify())
 					return;
@@ -102,7 +103,7 @@ define(['zepto', 'underscore', 'backbone',
 			},
 
 			deleteAddress: function(e){
-
+				e.preventDefault()
 				$.Dialog.confirm('警告', '确认要删除此地址吗?', function() {
 					
 					var param = {id:addressId}
@@ -160,7 +161,6 @@ define(['zepto', 'underscore', 'backbone',
 		//保存
 		var toSaveAddress = function (event) {
 			// 省10 江苏  106 苏州 3876 工业园区
-			event.stopPropagation();
 			var str = '';
 			if(addressId){
 				str = "id=" + addressId;

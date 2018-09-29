@@ -1,0 +1,90 @@
+
+<div class="share-css">
+    <header class="ui-header ui-header-positive ui-border-b">
+        <!--<i class="ui-icon-return" onclick="history.back();" style="color:white;"></i>-->
+        <img src="../../../assets/image/ic_back@3x.png" alt="" onclick="history.back();" width=24px height=24px; class="ic_back_return">
+        <h1 class="ui-txt-default name">discover</h1>
+        <!--<i class="ico_img icon_camera"></i>-->
+
+    </header>
+
+    <section class="ui-container ui-content">
+
+        <section class="mxep_block">
+
+            <div class="share_order_list">
+
+
+
+            </div>
+
+        </section>
+        <div class="ui-row ui-txt-center ui-txt-line-height-25 share_hasno_data" style="display:none">
+            还没有数据哦！
+        </div>
+
+    </section>
+
+</div>
+<script id="share_orders_item" type="text/template">
+    <% if(_.size(data) > 0) {
+    _.each(data,function(item){
+    %>
+    <div class="bg_white share_order_item" data-id=<%=item.id%>>
+
+        <div class="ui-row  user_info" >
+            <div style="display: flex">
+                <div class="user_head_img">
+                    <!-- <img src="assets/image/34.png"> -->
+                    <img src="../../assets/image/icon/ico_public_shoppingcart@2x.png" data-echo="<%=item.avatar%>" width="50px;" height="50px;">
+                </div>
+                <div style="margin: 2px 0px 0px 10px">
+                    <span class="user_nickname f16" ><%=item.member_name%></span>
+							<span class="ui-row ui-nowrap  ui-txt-line-height-20 f14 good_name" style="color: #666666;">
+							<%=item.goods_name%>
+						</span>
+                </div>
+
+            </div>
+
+            <span class="ui-txt-muted f12 f_right share_time" style="color: #999999;"><%=item.create_time%></span>
+
+
+        </div>
+
+
+
+        <!--<div class="ui-row ui-txt-grey-4 ui-txt-line-height-20 f14">-->
+        <!--<span>期号：</span>-->
+        <!--<span class="activity_no"><%=item.date_sn%></span>-->
+        <!--</div>-->
+
+        <div class="ui-row ui-txt-grey-6 ui-txt-line-height-20 f14 remark ui-nowrap">
+            <%=item.desc%>
+        </div>
+
+        <div class="ui-row">
+
+            <ul class=" share_img_list">
+                <li style="width:100%;">
+                    <div class="" style="width: 300px;height: 175px;margin-left: 60px;">
+                        <!-- <img src="http://placeholder.qiniudn.com/190x284"> -->
+                        <img src="../../assets/image/icon/ico_public_shoppingcart@2x.png" data-echo="<%=item.pictures[0]%>"width="100%" height="100%" >
+                    </div>
+                </li>
+                <!--<% _.each(item.pictures,function(picture){%>-->
+                <!--<%})%>-->
+
+            </ul>
+
+        </div>
+        <div>
+            <span style="display: flex;justify-content: flex-end;margin-top: 10px;">111 like</span>
+        </div>
+
+    </div>
+    <%});
+    }%>
+
+
+</script>

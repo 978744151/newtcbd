@@ -167,7 +167,7 @@ function lan(country){
                 purchase:'purchase record',//购买记录
                 discovery:' my discovery',//我的发现
                 delivery:'my delivery address',//我的收货地址
-                customer:'customer service center',//客服中心
+                customer:'Call Center',//客服中心
                 settings:'settings',//设置，
                 Login:'Login',//登录
                 registration:'registration',//注册
@@ -182,7 +182,8 @@ function lan(country){
                 Graphic:'Graphic introduction',//图文介绍
                 sharing:'sharing with prizes',//有奖分享
                 immediately:'buying immediately',//立刻购买
-                remaining:'remaining quantity',//剩余数量
+                remaining:'remaining quantity',//剩余数量,
+                remainings:'remaining',
                 inviting:'inviting friends',//邀请朋友,
                 chooseLoginMethod:'Choose login method'
             },

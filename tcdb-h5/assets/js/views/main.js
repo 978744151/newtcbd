@@ -57,6 +57,7 @@ define(['zepto', 'underscore', 'backbone',
 				//消息 中奖提醒 myMessage
 				"tap .icon_message": "myMessage",
 
+				"tap .to_shopping_cart":"shoppingCart",
 				
 
 
@@ -65,7 +66,10 @@ define(['zepto', 'underscore', 'backbone',
 			textFunction: function () {
 
 			},
+			shoppingCart: function(){
 
+				window.location.hash = "shoppingCart";
+			},
 			goodSearch: function () {
 
 				window.location.hash = "goodSearch";
@@ -122,7 +126,7 @@ define(['zepto', 'underscore', 'backbone',
 		});
 
 		var initEvent = function () {
-			var type = 	localStorage.getItem('lan');
+			var type = utils.getStor()
 			$('.hot').html(lan(type).mainPage.Popular)
 			$('.new').html(lan(type).mainPage.latest)
 			$('.program').html(lan(type).mainPage.completion)

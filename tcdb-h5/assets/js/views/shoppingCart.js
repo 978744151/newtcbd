@@ -43,7 +43,7 @@ define(
                 "tap .btn_go": "goAnnounced", //去逛逛
                 "tap ul.announced_good_list_cart > li": "announcedInfo", //揭晓商品详情
                 "tap .btn_calc": "shoppingCartCalc", //商品结算
-                "tap .shopping_cart_modify": "shoppingCartModify",//编辑 购物车
+                "touchend .shopping_cart_modify": "shoppingCartModify",//编辑 购物车
                 "tap .shopping_cart_list > li .choose_item": "chooseGood",//选择 商品
                 "tap .choose_all": "chooseAllGood",//选择 全部
                 "tap .btn_del": "delModalShow",//删除 确认弹框

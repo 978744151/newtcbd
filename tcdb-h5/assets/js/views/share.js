@@ -38,6 +38,7 @@ define(
 			events: {
 				//晒单详情
 				"tap .share_order_item": "shareOrderDetail",
+
 			},
 
 			//晒单详情
@@ -73,7 +74,9 @@ define(
 			Api.getShares(
 				param,
 				function (successData) {
-
+					var type = utils.getStor()
+					$('.name').html(lan(type).mainPage.Discover)
+					$('.issue').html(lan(type).mainPage.issue)
 					if (successData.result.data.length > 0) {
 
 						var template = _.template($shareOrderItem.html());

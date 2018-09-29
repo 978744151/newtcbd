@@ -21,7 +21,8 @@ define(['zepto', 'underscore', 'backbone', 'dropload',
                 $pageSize =4;//每页记录数
                 utils.showPage($page, function() {
                     $page.empty().append(prizeRecordTemplate);
-
+                    var type = utils.getStor()
+                    $('.name').html(lan(type).mainPage.lucky)
                     $prizeRecordContainer = $page.find(".prize_list");
                     $prizeRecordItem = $page.find("#prize_record_item");
                     //初始化dropload插件

@@ -22,7 +22,8 @@ define(['zepto', 'underscore', 'backbone',
                     $page.empty().append(myOrderTemplate);
 
                     $orderListItem = $page.find("#order_list_item");
-                    
+                    var type = utils.getStor()
+                    $('.name').html(lan(type).mainPage.purchase)
 
                     $pageNum = 1;
                     $pageSize = 4;

@@ -86,6 +86,7 @@ define([
 			//个人中心 个人信息
 			'personalInfo': 'loadPersonalInfoPage',
 
+			'myshare':'loadMyshare',
 			//梦想币
 			'myMxb': 'loadMyMxbPage',
 
@@ -491,7 +492,15 @@ define([
 				Views.myMxbView.render();
 			});
 		},
-
+		loadMyshare:function () {
+			utils.hideMenu();
+			requirejs(['views/Myshare'], function (Myshare) {
+				if (!Views.View) {
+					Views.myshareView = new Myshare();
+				}
+				Views.myshareView.render();
+			});
+		},
 		loadMyPackagePage: function () {
 			utils.hideMenu();
 			requirejs(['views/myPackage'], function (myPackage) {

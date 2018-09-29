@@ -57,11 +57,11 @@
 								<div class="ui-row ui-margin-b ui-txt-line-height-25  unit_price"
 										 data-unit_price="10">
 										<span style="color: #FF7400 "><%=step%>
-										梦想币</span>/人次
+										Baht</span>/Preson time
 								</div>
 
 								<div class="ui-row f14 ui-txt-line-height-30">
-										<span>本期期号：</span>
+										<span class="issue">Term number：</span>
 										<span class="current_announced_no">
 												<%=date_sn%>
 										</span>
@@ -80,12 +80,12 @@
 
 								<div class="ui-row f14 ui-txt-line-height-30 participant_container">
 										<span class="total_participant" data-count="<%=target%>">
-												总需
+												<span class="zongxu">总需</span>
 												<%=target%>
-												人次
+												<span>Preson time</span>
 										</span>
-										<span class="f_right surplus_participant" data-count="<%=remain%>">
-												剩余
+										<span class="f_right surplus_participant remainings" data-count="<%=remain%>">
+												remaining
 												<%=remain%>
 										</span>
 								</div>
@@ -99,7 +99,7 @@
 
 						<div class="ui-row ui-all-whitespace user_status not_login">
 								<span class="clr_login btn_login">登录</span>
-								以查看您的夺宝号
+								<span class="findDBH">以查看您的夺宝号</span>
 						</div>
 
 						<%
@@ -194,7 +194,7 @@
 										<span style="background-image:url('assets/image/announced/img_details_image@2x.png')"></span>
 								</div>
 								<div class="ui-list-info ui-border-t">
-										<h4 class="ui-nowrap name">图文详情</h4>
+										<h4 class="ui-nowrap name Graphic">图文详情</h4>
 								</div>
 						</li>
 

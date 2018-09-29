@@ -20,7 +20,8 @@ define(
 			render: function (id, name) {
 				utils.showPage($page, function () {
 					$page.empty().append(myAnnouncedRecordTemplate);
-
+					var type = utils.getStor()
+					$('.name').html(lan(type).mainPage.History);
 					$announced_item = $("#announced_item");
 					$pageNum = 1;
                     $pageSize = 4;

@@ -2,12 +2,12 @@ define(
     ['zepto', 'underscore', 'backbone', 'dropload',
         'swiper', 'echo', 'app/api', 'app/refreshtoken',
         'app/utils', 'app/scroll',
-        'text!templates/discover.html'
+        'text!templates/share.html'
     ],
 
-    function ($, _, Backbone, Dropload, Swiper, echo, Api, Token, utils, scroll, discover) {
+    function ($, _, Backbone, Dropload, Swiper, echo, Api, Token, utils, scroll, shareTemplate) {
 
-        var $page = $("#main-discover");
+        var $page = $("#my-share");
         var flag;//是否是个人晒单 1：是 0 不是 默认：0
         var $good_no = "";
         var imageRenderToken = null;
@@ -17,12 +17,13 @@ define(
         var $shareOrderListContainer;
         var $shareOrderItem;
 
-        var discoverView = Backbone.View.extend({
+        var shareView = Backbone.View.extend({
             el: $page,
             render: function (good_no) {
                 utils.showPage($page, function () {
-                    $page.empty().append(discover);
-
+                    $page.empty().append(shareTemplate);
+                    var type = utils.getStor()
+                    $('.name').html(lan(type).mainPage.discovery)
                     flag =0;
                     if (good_no)
                         $good_no = good_no;
@@ -171,6 +172,6 @@ define(
         };
 
 
-        return discoverView;
+        return shareView;
 
     });

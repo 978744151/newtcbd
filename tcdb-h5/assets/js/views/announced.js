@@ -25,7 +25,9 @@ define(
 					handlers = [];
 					$page.hide();
 					$page.empty().append(announcedTemplate);
-
+					var type = utils.getStor()
+					console.log(lan(type).mainPage.History)
+					$('.name').html(lan(type).mainPage.History)
 					$announcedGoodItem = $page.find("#announced_good_item");
 					$announcedGoodContain = $page.find(".announced_good_list");
 

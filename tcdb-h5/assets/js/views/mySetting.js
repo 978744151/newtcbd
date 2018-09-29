@@ -12,7 +12,10 @@ define(['zepto', 'underscore', 'backbone',
 			render: function () {
 				utils.showPage($page, function () {
 					$page.empty().append(mySettingTemplate);
-
+					var type = utils.getStor()
+					$('.name').html(lan(type).mainPage.settings)
+					$('.languageSelection').html(lan(type).mainPage.languageSelection)
+					$('.notifications').html(lan(type).mainPage.notifications)
 					if(utils.isLogined()){
 						$(".btn_sign_out").show();
 					}else{
@@ -25,9 +28,13 @@ define(['zepto', 'underscore', 'backbone',
 				"tap .btn_sign_out": "dropOut",
 
 				"tap ul > li": "GoPage",//进入 展示页面
-
+				"tap .languageSelection": "languageSelection",
 			},
-
+			languageSelection: function () {
+				console.log(1);
+				//utils.storage.remove("loginSuccess");
+				window.location.href = window.ctx + 'language.html'
+			},
 			dropOut: function () {
 				//utils.storage.remove("loginSuccess");
 
@@ -44,7 +51,6 @@ define(['zepto', 'underscore', 'backbone',
 			},
 
 			GoPage: function (e) {
-
 				e.stopImmediatePropagation();
 				var $this = $(e.currentTarget);
 

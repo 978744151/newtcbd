@@ -594,12 +594,21 @@ body,html{
 .category-good-back {
 	color: #333 !important;
 }
-
+.index_shopping_cart:before {
+	background: url("../../assets/image/ic_gouwuche@3x.png");
+	background-size: 100% 100%;
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	/*width: 24px;*/
+	height: 34px;
+	z-index: 10;
+}
 .ui-header .icon_shopping_cart:before {
 	background: url("../../assets/image/img_details_shopping@2x.png");
 	background-size: 100% 100%;
 	position: absolute;
-	right: 20px;
+	right: 15px;
 	top: 0;
 	width: 44px;
 	height: 44px;
@@ -2623,7 +2632,7 @@ section.mxep_block.user_info_container .personal_info .recharge:before {
 
 .shopping-cart-css section.mxep_block.already_shopping .good_operate {
 	position: fixed;
-	bottom: 60px;
+	bottom: 0px;
 	left: 0;
 	width: 100%;
 	display: none;

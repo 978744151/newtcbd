@@ -40,7 +40,7 @@ define(
 				"tap .modal .remove": "buyNowModalHide",//立即购买 弹框隐藏
 				"tap .modal .attend_count_list .item": "chooseAttendCount",//立即购买 参与人次数量
 				"tap .btn_join_list": "joinShoppingCart",//加入清单
-				"tap .modal .btn_sure": "buyNowSure",//立即购买 加入购物车后 跳转到清单页面
+				"touchend .modal .btn_sure": "buyNowSure",//立即购买 加入购物车后 跳转到清单页面
 				"tap .btn_login": "GoLogin",//跳转到登录页面
 				"tap .ui-icon-shoppingCart": "shoppingCart",//进入购物车
 				"tap .btn_search_all": "searchAllNo",//查看全部 夺宝号码
@@ -179,8 +179,8 @@ define(
 			},
 
 			//确认 立即购买
-			buyNowSure: function () {
-
+			buyNowSure: function (e) {
+				e.preventDefault()
 				var obj = new Object();
 				obj.auction_id = $good_no;
 				obj.quantity = $.trim($page.find(".modal .spinner_buy_count").val());
@@ -294,6 +294,15 @@ define(
 			basket.getShoppingCartNumber(0, function (number) {
 				$(".shopping_cart_good_count").html(number);
 			});
+			var type = utils.getStor()
+			$('.issue').html(lan(type).mainPage.issue);
+			$('.remainings').html(lan(type).mainPage.remaining);
+			$('.btn_login').html(lan(type).mainPage.Login);
+			$('.Graphic').html(lan(type).mainPage.Graphic);
+			//$('.not_attend').html(lan(type).mainPage.Login)
+			//$('.findDBH').html(lan(type).mainPage.Login);
+			//$('.zongxu').html(lan(type).mainPage.remaining);
+			//$('.btn_search_all').html(lan(type).mainPage.remaining);
 		};
 
 		//动态加载图片

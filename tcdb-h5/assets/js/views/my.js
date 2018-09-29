@@ -17,7 +17,14 @@ define(['zepto', 'underscore', 'backbone',
             render: function(id, name) {
                 utils.showPage($page, function() {
                     $page.empty().append(myTemplate);
-
+                    var type = utils.getStor()
+                    $('.History').html(lan(type).mainPage.integrate)
+                    $('.Lucky').html(lan(type).mainPage.lucky)
+                    $('.Shopping').html(lan(type).mainPage.purchase)
+                    $('.Discover').html(lan(type).mainPage.discovery)
+                    $('.Add').html(lan(type).mainPage.delivery)
+                    $('.Call').html(lan(type).mainPage.customer)
+                    $('.Setting').html(lan(type).mainPage.settings)
                     $usserInfoContaniter = $page.find(".usser_info_contaniter");
                     $userInfoItem = $page.find("#user_info_item");;
                     //得到登陆状态
@@ -38,10 +45,13 @@ define(['zepto', 'underscore', 'backbone',
                 "tap .personal_info .item":"aboutMoney",
                 //查询 夺宝记录，中奖纪录 ..   我的晒单，充值记录....
                 "tap ul li": "queryRecords",
-                "tap .myIntegral":"myIntegral"
-              
-            }, 
+                "tap .myIntegral":"myIntegral",
+                "tap .to_shopping_cart":"shoppingCart",
+            },
+            shoppingCart: function(){
 
+                window.location.hash = "shoppingCart";
+            },
             login: function(){
                 
                 utils.storage.set("loginSuccessBack",window.location.hash);

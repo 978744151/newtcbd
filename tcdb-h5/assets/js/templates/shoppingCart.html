@@ -64,9 +64,10 @@
 								
 						</div>
 						<div class="ui-list-info">
-								<div class="ui-nowrap-multi ui-txt-line-height-25 good_name">
+								<div class="ui-nowrap-flex ui-txt-line-height-25 good_name">
 										<%=item.name%>
 								</div>
+								<p style="font-size: 16px;padding: 0;margin-top: 5px;"><span style="color: #FF7400;"><%=item.quantity%>Baht</span>/Preson Time</p>
 								<div class="ui-row margin-tb-5 f14 ui-txt-grey-6 ui-txt-line-height-20 attend_count"
 										 data-surplus_count="<%=item.remain%>" data-quantity="<%=item.quantity%>">
 										总需
@@ -164,5 +165,12 @@
 <style>
 		.spinner {
 				float:none ;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+		}
+		.spinner .value{
+			background: rgb(248, 248, 248);
+			width: 100%;
 		}
 </style>

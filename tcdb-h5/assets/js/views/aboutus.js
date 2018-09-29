@@ -17,7 +17,9 @@ define(
 			render: function () {
 				utils.showPage($page, function () {
 					$page.empty().append(aboutusTemplate);
-
+					var type = utils.getStor()
+					$('.name').html(lan(type).mainPage.notifications)
+					$('.ui-content').html(lan(type).product)
 					//如果URL里面有platform ,title 就不显示
 					if (location.href.indexOf("platform") > -1) {
 						$page.find("header").hide();
@@ -41,10 +43,10 @@ define(
 				function (data) {
 					//console.log(data);
 
-					var content = data.result.content;
+					//var content = data.result.content;
 					//console.log(content);
 
-					$page.find(".ui-content").empty().append(content);
+					//$page.find(".ui-content").empty().append(content);
 
 				},
 				function (data) {
