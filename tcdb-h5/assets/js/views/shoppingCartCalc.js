@@ -97,11 +97,11 @@ define(
 					freeMoney = data.free_money;//总优惠金额
 					totalMoney = data.total_money;//总计
 					$(".real_pay_price").html(data.actual_money + "梦想币");
-					$(".discount_total_price").html("- " +  data.coupon_free_money + "梦想币");
+					$(".discount_total_price").html("- " +  data.coupon_free_money + "Baht");
 					if(data.coupon_free_money > 0){
 						$(".package_item_choose").html("已使用1张 节省" + data.coupon_free_money + "梦想币").show()
 					}
-					$(".good_total_price").html(successData.result.total_money + "梦想币");
+					$(".good_total_price").html(successData.result.total_money + "Baht");
 
 				}, function(errorData){
 

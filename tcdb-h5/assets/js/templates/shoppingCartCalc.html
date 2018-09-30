@@ -1,8 +1,8 @@
 <div class="shoppingCart-Calc-css">
 		<header class="ui-header ui-header-positive ui-border-b">
-
-				<i class="ui-icon-return" onclick="history.back();"></i>
-				<h1 class="ui-txt-default name">购物车结算</h1>
+			<img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();" width=24px height=24px;>
+				<!--<i class="ui-icon-return" onclick="history.back();"></i>-->
+				<h1 class="ui-txt-default name">order</h1>
 
 		</header>
 
@@ -19,7 +19,7 @@
 
 		</footer>
 
-		<section class="ui-container ui-content cart_calc_container">
+		<section class="ui-container ui-content cart_calc_container" style="background: #f5f5f5;">
 
 				
 
@@ -28,73 +28,73 @@
 <script id="cart_calc_item" type="text/template">
 	<section class="mxep_block">
 
-			<div class="bg_white pd-20-15 ui-margin-b-20" style="padding-top: 0;">
+			<div class="" style="padding-top: 0;">
 
 			<span class="ui-row ui-txt-line-height-50">
 
-					<span class="ui-col ui-col-30">商品合计</span>
+					<!--<span class="ui-col ui-col-30">商品合计</span>-->
 
-					<span class="ui-col ui-col-40 good_total_count" data-count="3">
-							共
-							<span class="ui-txt-bold f18"><%=total%></span>
-							件
-					</span>
+					<!--<span class="ui-col ui-col-40 good_total_count" data-count="3">-->
+							<!--共-->
+							<!--<span class="ui-txt-bold f18"><%=total%></span>-->
+							<!--件-->
+					<!--</span>-->
 
-					<span class="ui-col ui-col-30 good_total_price" data-price="70">
-							<%=total_price%>梦想币
-					</span>
+					<!--<span class="ui-col ui-col-30 good_total_price" data-price="70">-->
+							<!--<%=total_price%>梦想币-->
+					<!--</span>-->
 
 			</span>
 
-					<div class="bg-ffefe7 pd-5-15">
+					<div class="">
 
-							<div class="ui-row clr-orange ui-txt-line-height-50 ui-txt-bold">
-									注：请确认如下订单明细
-							</div>
-
-							<ul class="ui-list ui-txt-line-height-36 bg-ffefe7 order_list">
+							<!--<div class="ui-row clr-orange ui-txt-line-height-50 ui-txt-bold">-->
+									<!--注：请确认如下订单明细-->
+							<!--</div>-->
+							<ul class="shopCart_ul">
 								<%
-									if(carts && carts.length > 0) {
-									_.each(carts,function(item){
+								if(carts && carts.length > 0) {
+								_.each(carts,function(item){
 
 								%>
-									<li>
-
-											<div class="ui-nowrap good_name">
-													<%=item.name%>
+								<li class="shopCart_li">
+									<div class="shopCart_div">
+										<div class="shopCart_div_left">
+											<div class="shopCart_div_image">
+												<img src="<%=item.thumb%>" alt="" width="60px;height:60px;">
 											</div>
-
-											<div class="attend_count" data-count="5">
-													<%=item.quantity%>人次
+											<div class="shopCart_div_right">
+												<p class="ui-nowrap-flex"><%=item.name%></p>
+												<span><%=item.quantity%> Preson time</span>
 											</div>
-
-									</li>
+										</div>
+									</div>
+									<span style="margin-top: 41px;font-size: 15px;color: #555555;">X<%=item.quantity%></span>
+								</li>
 								<%});
 								}%>
-
 							</ul>
-
 					</div>
 
 			</div>
 
-			<div class="bg_white ui-whitespace ui-margin-b-20 ui-txt-line-height-50">
+			<div class="bg_white ui-whitespace ui-txt-line-height-50" style="border-bottom: 1px solid #e4e4e4;">
 
-					<div class="ui-border-b ui-arrowlink ui-row choose_package">
+					<div class="ui-border-b ui-arrowlink ui-row choose_package" style="margin-right: -15px;">
 
-							<span>红包</span>
+							<span>Red envelopes</span>
 					<span class="f_right pd-r-30 package_item package_item_choose" style="display:none" data-package_id="1">
 							<!-- 已使用1张 节省40梦想币 -->
 					</span>
 
 					</div>
 
-					<div class="ui-row">
+					<!--<div class="ui-row">-->
 
-							<span>其他抵扣</span>
-							<span class="f_right">暂无</span>
+							<!--<span>其他抵扣</span>-->
+							<!--<span class="f_right">暂无</span>-->
 
-					</div>
+					<!--</div>-->
 
 			</div>
 
@@ -102,20 +102,27 @@
 
 					<div class="ui-row">
 
-							商品合计
-					<span class="f_right ui-txt-pink good_total_price" data-price="70">
-							70梦想币
+							total
+					<!--<span class="  good_total_price" data-price="70" style="color:#FF7400">-->
+							<!--70梦想币-->
+					<!--</span>-->
+					<span >
+						<%=carts.length%> pieces
 					</span>
-
 					</div>
 
 					<div class="ui-row">
 
 							折扣合计
-					<span class="f_right ui-txt-pink discount_total_price" data-price="2">
+					<span class="discount_total_price" data-price="2" >
 						-	2梦想币
 					</span>
-
+					<span class="f_right" >
+						Total:
+						<span class=" good_total_price" style="color:#FF7400">
+							: 60 Baht
+						</span>
+					</span>
 					</div>
 
 			</div>

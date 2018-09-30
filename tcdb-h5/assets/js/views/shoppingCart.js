@@ -49,15 +49,15 @@ define(
                 "tap .btn_del": "delModalShow",//删除 确认弹框
 
                 //增加数量 加1
-                //"tap .increase":"increaseNumber",
+                "click .increase":"increaseNumber",
 
                 //减少数量 减1
-                //"tap .decrease":"decreaseNumber",
+                "click .decrease":"decreaseNumber",
 
                 //"input .good_count":"text",
 
                 //加入购物车
-                "tap .add_to_shopping_cart":"addToShoppingCart",
+                "click .add_to_shopping_cart":"addToShoppingCart",
 
 
             },
@@ -161,7 +161,7 @@ define(
             //增加数量 加1
             increaseNumber: function(e){
 
-            	e.stopImmediatePropagation();
+                e.preventDefault()
 
             	$this= $(e.currentTarget);
 
@@ -179,7 +179,7 @@ define(
             //减少数量 减1
             decreaseNumber: function(e){
 
-            	e.stopImmediatePropagation();
+                e.preventDefault()
 
             	$this= $(e.currentTarget);
 
@@ -491,7 +491,8 @@ define(
 
         //刷新商品数量和所需梦想币
         var refreshTotalPrice = function(){
-        	Api.getShoppingCarts(null, function(successData){        		
+        	Api.getShoppingCarts(null, function(successData){
+                console.log(successData)
         		$(".total_count").html(successData.result.total);
         		$(".total_price").html(successData.result.total_price+"梦想币");
         		$(".total_price").data("count",successData.result.total_price);

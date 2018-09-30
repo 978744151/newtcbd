@@ -49,10 +49,10 @@ define(['zepto', 'underscore', 'backbone',
 				"tap .tab_bar_list li": "tabBarList",
 
 				//加入购物车
-				"tap .add_to_shopping_cart": "addToShoppingCart",
+				"touchend .add_to_shopping_cart": "addToShoppingCart",
 
 				//夺宝商品 详情
-				"tap .announced_good_list li": "duobaoGoodInfo",
+				"touchend .announced_good_list li": "duobaoGoodInfo",
 
 				//消息 中奖提醒 myMessage
 				"tap .icon_message": "myMessage",

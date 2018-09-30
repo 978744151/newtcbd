@@ -43,14 +43,14 @@
 			});
 
 			//增加
-			var increaseButton = $('<button class="increase">+</button>')
+			var increaseButton = $('<button class="increase"><img style="width: 100%;height: 100%;" src="../../assets/image/ic_add@3x.png" alt=""></button>')
 				.click(function (e) {
 					changeValue(1);
 					options.add(e);//回调接口
 					//options.blur(e);
 				});
 			//减少
-			var decreaseButton = $('<button class="decrease">-</button>')
+			var decreaseButton = $('<button class="decrease"><img style="width: 100%;height: 100%;" src="../../assets/image/ic_del@3x.png" alt=""></button>')
 				.click(function (e) {
 					changeValue(-1);
 					options.del(e);//回调接口

@@ -49,9 +49,9 @@ define(['zepto', 'underscore', 'backbone',  'swiper', 'echo',
                 //进入清单 购物车
                 "tap .to_shopping_cart":"shoppingCart",
                 //加入购物车（清单）
-                "tap .add_shopping_cart":"addToShoppingCart",
+                "touchend .add_shopping_cart":"addToShoppingCart",
                 //商品详情
-                "tap .announced_good_list":"duobaoGoodInfo", 
+                "click .announced_good_list":"duobaoGoodInfo",
                 //全部加入清单
                 "tap .all_to_shopping_cart":"allAddToShoppingCart",
                                        
@@ -93,6 +93,7 @@ define(['zepto', 'underscore', 'backbone',  'swiper', 'echo',
                 });
                 //console.log(ids);
                 basket.batchAddShoppingCart(ids,1,function(successData){
+                    $.Dialog.success("添加成功");
                     getShoppingCartNumber();
                 }, function(errorData){
 
@@ -197,8 +198,6 @@ define(['zepto', 'underscore', 'backbone',  'swiper', 'echo',
                 if( errorData.err_code == 20002 ){
 
                     Token.getRefeshToken(1,function(data){
-
-                        addShoppingCart(formData);
 
                     },function(data){
 
