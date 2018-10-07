@@ -104,7 +104,7 @@ body,html{
 	margin-bottom: 79px;
 }
 
-.main-css section.mxep_block .banner_img_list .swiper-wrapper {
+.banner_img_list .swiper-wrapper {
 	width: 100%;
 	height: 200px;
 }
@@ -697,7 +697,7 @@ section.good_list_container .good_list_container_div .good_list{
 section.good_list_container .good_list li {
 	width: 49%;display: inline-block;padding-left: 0;
 	background-color: #fff;
-	margin-top: 10px;
+	/*margin-top: 10px;*/
 }
 section.good_list_container .good_list li .ui-list-info {
 	display: block;
@@ -1352,7 +1352,7 @@ section.mxep_block.user_info_container .personal_info .recharge:before {
 }
 
 .share-css section.mxep_block .share_order_list .share_order_item .good_name {
-	width: 80%;
+	width: 60%;
 }
 
 .share-css section.mxep_block .share_order_list .share_order_item .remark {
@@ -4458,6 +4458,45 @@ section.mxep_block.user_info_container .personal_info .recharge:before {
 	height: 22px;
 	background: url('../../../assets/image/ic_xuan_press@3x.png') no-repeat 100% 100%;
 	background-size: contain;
+}
+.category-good-css header{
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+}
+.category-good-css header h1{
+	font-family: PingFang-SC-Medium;
+	font-size: 18px;
+	color: #FFFFFF;
+	margin-top: 15px;
+}
+.category-good-css .banner_img_list{}
+.integralBottom {
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	z-index: 11111;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #fff;
+}
+.integralBottom button{
+	background: #FF7400;
+	border-radius: 4px;
+	color:white;
+	height: 35px;
+	text-align: center;
+	line-height: 24px;
+	font-size:16px;
+	width: 80%;
+	border-radius: 4px;
 }
 /**
 * 同城夺宝

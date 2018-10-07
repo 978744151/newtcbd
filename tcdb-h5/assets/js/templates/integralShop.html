@@ -1,0 +1,53 @@
+    <div class="mui-scroll-wrapper" id="pull" >
+        <div class="mui-scroll  integral_content" >
+
+       </div>
+    </div>
+
+<script id="tpl" type="text/html">
+    <section class="mxep_block ui-margin-b-20 ui-txt-center user_info_container My_center"style="padding-top:30px;padding-bottom: 30px;" >
+        <img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();" width=24px height=24px;>
+        <!--<i class="ui-icon-set ui-txt-white"></i>-->
+        <!--<i class="ui-icon-message"></i>-->
+        <div class="usser_info_contaniter" >
+            <div class="ui-margin-b-5 user_head_img">
+                <img src="{{data.avatar}}">
+            </div>
+            <div class="myIntegral"><span>Integral：</span><span class="f14 ui-row">{{data.point}}</span></div>
+        </div>
+    </section>
+    <section class="ui-container ui-content">
+        <section class="mxep_block good_list_container">
+            <!--<div class="ui-row ui-whitespace ui-txt-line-height-50 good_list_txt">-->
+
+            <!--<span class="f_left">-->
+            <!--共<span class="category_good_count">0</span>件商品-->
+            <!--</span>-->
+
+            <!--<span class="ui-txt-red-1 f_right all_to_shopping_cart">全部加入清单</span>-->
+
+            <!--</div>-->
+
+            <div class="good_list_container_div " style="padding: 0px 10px">
+                <ul class="ui-list-active ui-list-cover ui-border-tb good_list">
+                    {{ each thisgoods item i}}
+                    <li class="ui-border-t announced_good_list" data-id="<%=item.id%>">
+                        <div class="ui-list-img" style="width: 100%;height: 172px;display: inline-block;margin-top: 0px;">
+                            <!-- <span style="background-image:url(http://placeholder.qiniudn.com/200x136)"></span> -->
+                            <span style="background-image:url(<%=item.pic%>);background-position: center;background-size: contain"></span>
+                            <p class="ui-nowrap-multi f14 good_name" style="text-align: left;padding-left: 10px;"><%=item.remain%>/<%=item.stock%> left</p>
+                        </div>
+
+                        <div class="ui-list-info cate-list-info" data-id="<%=item.id%>" style="padding-left: 10px;">
+                            <span style="font-size: 14px;
+color: #333333;" class="ui-nowrap-flex"><%=item.goodsName%></span>
+                            <span style="font-size: 16px;
+color: #FF7400;"><%=item.exchangePonit%> <span style="color:#3A3A3A;">integral</span></span>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </section>
+    </section>
+</script>

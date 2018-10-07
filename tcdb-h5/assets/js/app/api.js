@@ -1,7 +1,9 @@
 define(
 	['zepto', 'app/utils', 'underscore'],
 	function ($, utils, _) {
-
+		var language = localStorage.getItem('lan') == 1? 'eng':'thai ';
+		var html = '&source=1&lan='+language;
+		var html1 = '?source=1&lan='+language;
 		var ajaxSetup = function () {
 			//$.ajaxSetup({
 			//  accept: 'application/json',
@@ -363,7 +365,7 @@ define(
 			 */
 			getCategories: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/categories",
+					url: window.API_URL + "/categories" + html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -382,7 +384,7 @@ define(
 			 */
 			getCategoriesList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/auctions/categories/" + param.categoryId + "?page=" + param.page + "&page_size=" + param.page_size,
+					url: window.API_URL + "/auctions/categories/" + param.categoryId + "?page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					//data:param.paramData,
 					dataType: 'json',
@@ -395,15 +397,52 @@ define(
 					}
 				});
 			},
-
+			//分类banner
+			getCategoriesBanner: function (params,success,error) {
+				$.ajax({
+					url: window.API_URL + "/categories/carousel?categoryId="+params.categoryId+"&source=1" ,
+					type: "GET",
+					success: function (data) {
+						console.log(data)
+						typeof success == 'function' && success(data);
+					},
+					onError: function (data) {
+						typeof error == 'function' && error(data);
+					}
+				});
+			},
 			/**
 			 * 积分说明
 			 * @param  {Function} success         [发送成功后的回调函数]
 			 * @return {[type]}                   [ description]
 			 */
+			getIntegralShop:function(param, success, error){
+				$.ajax({
+					url: window.API_URL + "/exchangeGoods/list?page=" + param.page + "&page_size=" + param.page_size + "&access_token=" + utils.storage.get("access_token") + html,
+					type: "GET",
+					success: function (data) {
+						typeof success == 'function' && success(data);
+					},
+					onError: function (data) {
+						typeof error == 'function' && error(data);
+					}
+				});
+			},
+			getIntegralShopCalc:function(id, success, error){
+				$.ajax({
+					url: window.API_URL + "/exchangeGoods/detail/"+ id +"?access_token=" + utils.storage.get("access_token") + html,
+					type: "GET",
+					success: function (data) {
+						typeof success == 'function' && success(data);
+					},
+					onError: function (data) {
+						typeof error == 'function' && error(data);
+					}
+				});
+			},
 			getIntegralExplainData: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/points/intros",
+					url: window.API_URL + "/points/intros"+html1,
 					type: "GET",
 					data: param,
 					dataType: 'json',
@@ -423,7 +462,7 @@ define(
 			 */
 			getAccountIntegration: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/points?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/points?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					data: param,
 					dataType: 'json',
@@ -443,7 +482,7 @@ define(
 			 */
 			getRecordList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/points/logs?access_token=" + utils.storage.get("access_token") + "&type=" + param.recordType
+					url: window.API_URL + "/points/logs?access_token=" + utils.storage.get("access_token") + "&type=" + param.recordType + html
 					+ "&page=" + param.page + "&page_size=" + param.page_size,
 					type: "GET",
 					data: param,
@@ -465,7 +504,7 @@ define(
 			 */
 			getBalancesList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/balances/logs?access_token=" + utils.storage.get("access_token") + "&type=" + param.recordType
+					url: window.API_URL + "/balances/logs?access_token=" + utils.storage.get("access_token") + "&type=" + param.recordType + html
 					+ "&page=" + param.page + "&page_size=" + param.page_size,
 					type: "GET",
 					data: param,
@@ -487,7 +526,7 @@ define(
 			 */
 			getPackageList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/coupons?access_token=" + utils.storage.get("access_token") + "&type=" + param.packageType
+					url: window.API_URL + "/coupons?access_token=" + utils.storage.get("access_token") + "&type=" + param.packageType +html
 					+ "&page=" + param.page + "&page_size=" + param.page_size,
 					type: "GET",
 					data: param,
@@ -509,7 +548,7 @@ define(
 			 */
 			getPackageListOne: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/coupons?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/coupons?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					data: param,
 					dataType: 'json',
@@ -532,8 +571,7 @@ define(
 			 */
 			addToShoppingCart: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shopping_carts/increase?access_token=" +
-					utils.storage.get("access_token"),
+					url: window.API_URL + "/shopping_carts/increase?access_token=" + utils.storage.get("access_token")+ html,
 					type: "POST",
 					data: param.formData,
 					dataType: 'json',
@@ -556,7 +594,7 @@ define(
 			 */
 			decreaseToShoppingCart: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shopping_carts/decrease?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/shopping_carts/decrease?access_token=" + utils.storage.get("access_token")+ html,
 					type: "POST",
 					data: param.formData,
 					dataType: 'json',
@@ -579,7 +617,7 @@ define(
 			 */
 			delGoodsFromShopCart: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shopping_carts/delete?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/shopping_carts/delete?access_token=" + utils.storage.get("access_token")+ html,
 					type: "POST",
 					data: param.formData,
 					dataType: 'json',
@@ -602,7 +640,7 @@ define(
 			 */
 			delGoodsFromShopCart: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shopping_carts/delete?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/shopping_carts/delete?access_token=" + utils.storage.get("access_token")+ html,
 					type: "POST",
 					data: param.formData,
 					dataType: 'json',
@@ -625,7 +663,7 @@ define(
 			 */
 			delGoodsFromShopCart: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shopping_carts/delete?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/shopping_carts/delete?access_token=" + utils.storage.get("access_token")+ html,
 					type: "POST",
 					data: param.formData,
 					dataType: 'json',
@@ -648,7 +686,7 @@ define(
 			 */
 			batchAddShoppingCart: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shopping_carts/batch/increase?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/shopping_carts/batch/increase?access_token=" + utils.storage.get("access_token")+ html,
 					type: "POST",
 					data: param.formData,
 					dataType: 'json',
@@ -669,7 +707,7 @@ define(
 			 */
 			getShoppingCarts: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shopping_carts?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/shopping_carts?access_token=" + utils.storage.get("access_token")+ html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -688,7 +726,7 @@ define(
 			 */
 			getHomeData: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/home",
+					url: window.API_URL + "/home"+html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -708,7 +746,7 @@ define(
 			getFlashSale: function (param, success, error) {
 				var url;
 				if (utils.isLogined()) {
-					url = "/flash_sale?access_token=" + utils.storage.get("access_token");
+					url = "/flash_sale?access_token=" + utils.storage.get("access_token")+ html;
 				} else {
 					url = "/flash_sale";
 				}
@@ -733,9 +771,9 @@ define(
 			getFlashSaleInfo: function (param, success, error) {
 				var url;
 				if (utils.isLogined()) {
-					url = "/flash_sale/" + param.flash_goods_id + "?access_token=" + utils.storage.get("access_token") + "&section=" + param.section;
+					url = "/flash_sale/" + param.flash_goods_id + "?access_token=" + utils.storage.get("access_token") + "&section=" + param.section + html;
 				} else {
-					url = "/flash_sale/" + param.flash_goods_id + "?section=" + param.section;
+					url = "/flash_sale/" + param.flash_goods_id + "?section=" + param.section + html;
 				}
 				$.ajax({
 					url: window.API_URL + url,
@@ -757,7 +795,7 @@ define(
 			 */
 			toGetRightToBuy: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/flash_sale/reservation/" + param.flash_goods_id + "?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/flash_sale/reservation/" + param.flash_goods_id + "?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -777,7 +815,7 @@ define(
 			 */
 			getIsLoginFlashSale: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/flash_sale?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/flash_sale?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -796,7 +834,7 @@ define(
 			 */
 			getSpecialGoodList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/auctions/recommends" + "?page=" + param.page + "&page_size=" + param.page_size,
+					url: window.API_URL + "/auctions/recommends" + "?page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -819,12 +857,12 @@ define(
 				if (param.flag == 1) {
 					url = url +
 						"/my?page=" + param.page +
-						"&page_size=" + param.page_size + "&access_token=" + utils.storage.get("access_token");
+						"&page_size=" + param.page_size + "&access_token=" + utils.storage.get("access_token") + html;
 				} else {
 					url = url +
 						"?auction_id=" + param.auction_id +
 						"&page=" + param.page +
-						"&page_size=" + param.page_size;
+						"&page_size=" + param.page_size + html;
 				}
 				$.ajax({
 					url: url,
@@ -847,7 +885,7 @@ define(
 			 */
 			getShareDetail: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shares/" + param.shareId,
+					url: window.API_URL + "/shares/" + param.shareId + html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -866,7 +904,7 @@ define(
 			 */
 			getRechargeTemplate: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/recharge",
+					url: window.API_URL + "/recharge" + html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -887,7 +925,7 @@ define(
 			 */
 			rechargePay: function (money, payType, success, error) {
 				$.ajax({
-					url: window.API_URL + "/recharge?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/recharge?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data : {money : money, pay_type : payType},
@@ -907,7 +945,7 @@ define(
 			 */
 			getRechargeRecord: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/logs/recharges?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size,
+					url: window.API_URL + "/logs/recharges?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -927,7 +965,7 @@ define(
 			 */
 			getHotSearchList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/search/keywords",
+					url: window.API_URL + "/search/keywords" + html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -946,7 +984,7 @@ define(
 			 */
 			getSearchResults: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/auctions/search?keywords=" + param.keywords + "&page=" + param.page + "&page_size=" + param.page_size,
+					url: window.API_URL + "/auctions/search?keywords=" + param.keywords + "&page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -966,7 +1004,7 @@ define(
 			 */
 			getSignInfo: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/signIn?access_token=" + param.accessToken,
+					url: window.API_URL + "/signIn?access_token=" + param.accessToken + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask:false,
@@ -986,7 +1024,7 @@ define(
 			 */
 			signIn: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/signIn?access_token=" + param.accessToken,
+					url: window.API_URL + "/signIn?access_token=" + param.accessToken + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -1005,7 +1043,7 @@ define(
 			 */
 			getIntegralExchangeRate: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/points/exchange/ratio?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/points/exchange/ratio?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1024,7 +1062,7 @@ define(
 			 */
 			exchangePoints: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/points/exchange?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/points/exchange?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1044,7 +1082,7 @@ define(
 			 */
 			getMyMessageList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/message?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size,
+					url: window.API_URL + "/members/message?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1068,7 +1106,7 @@ define(
 					"?type=" + param.type +
 					"&page=" + param.page +
 					"&page_size=" + param.page_size +
-					"&direction=" + param.direction,
+					"&direction=" + param.direction + html,
 					type: "GET",
 					dataType: 'json',
 					data: param.formData,
@@ -1090,7 +1128,7 @@ define(
 			 */
 			getMembersInfo: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1109,7 +1147,7 @@ define(
 			 */
 			getBindPhoneVerCode: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/bind/mobile?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/bind/mobile?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.fromData,
@@ -1129,7 +1167,7 @@ define(
 			 */
 			bindStep2: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/bind/captcha?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/bind/captcha?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.fromData,
@@ -1149,7 +1187,7 @@ define(
 			 */
 			complatePhoneBind: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/bind/password?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/bind/password?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1169,7 +1207,7 @@ define(
 			 */
 			saveAddresses: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/addresses?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/addresses?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1190,9 +1228,9 @@ define(
 			getAddressList: function (param, success, error) {
 				var url;
 				if (param != null) {
-					url = "/members/addresses?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size;
+					url = "/members/addresses?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size + html;
 				} else {
-					url = "/members/addresses?access_token=" + utils.storage.get("access_token");
+					url = "/members/addresses?access_token=" + utils.storage.get("access_token") + html;
 				}
 
 				$.ajax({
@@ -1216,7 +1254,7 @@ define(
 			 */
 			getAddress: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/addresses/" + param.id + "?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size,
+					url: window.API_URL + "/members/addresses/" + param.id + "?access_token=" + utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1236,7 +1274,7 @@ define(
 			 */
 			settlement: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/flash/settlement?access_token=" + utils.storage.get("access_token") + "&coupon_id=" + param.coupon_id + "&flash_goods_id=" + param.flash_goods_id + "&section=" + param.section,
+					url: window.API_URL + "/orders/flash/settlement?access_token=" + utils.storage.get("access_token") + "&coupon_id=" + param.coupon_id + "&flash_goods_id=" + param.flash_goods_id + "&section=" + param.section + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1255,7 +1293,7 @@ define(
 			 */
 			firmOrder: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/flash/settlement?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/flash/settlement?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1275,7 +1313,7 @@ define(
 			 */
 			orderPay: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_sn + "/pay?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_sn + "/pay?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -1296,7 +1334,7 @@ define(
 			login: function (param, beforeSend, success, error) {
 				//param.openId = utils.storage.get("wxOpenid") || 'test';
 				$.ajax({
-					url: window.API_URL + "/member/login" + utils.storage.get("access_token"),
+					url: window.API_URL + "/member/login" + utils.storage.get("access_token") + html,
 					type: "POST",
 					data: JSON.stringify(param),
 					dataType: 'json',
@@ -1314,7 +1352,7 @@ define(
 			//获取夺宝 商品详情
 			getDuobaoInfo: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/auctions/" + param.good_no + "?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/auctions/" + param.good_no + "?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1331,7 +1369,7 @@ define(
 					url: window.API_URL + "/auctions/" + param.auction_date_id +
 					"/records" +
 					"?page=" + param.page +
-					"&page_size" + param.page_size,
+					"&page_size" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1349,7 +1387,7 @@ define(
 					url: window.API_URL + "/auctions/" + param.good_no +
 					"/history" +
 					"?page=" + param.page +
-					"&page_size" + param.page_size,
+					"&page_size" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1364,7 +1402,7 @@ define(
 			//获取 发现功能列表
 			getFindFuncList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/discovers",
+					url: window.API_URL + "/discovers" + html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1381,7 +1419,7 @@ define(
 					url: window.API_URL + "/wishlists" +
 					"?access_token=" + utils.storage.get("access_token") +
 					"&page=" + param.page +
-					"&page_size" + param.page_size,
+					"&page_size" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1397,7 +1435,7 @@ define(
 			wishPush: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/wishlists/publish" +
-					"?access_token=" + utils.storage.get("access_token"),
+					"?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					data: param,
 					dataType: 'json',
@@ -1414,7 +1452,7 @@ define(
 			getPrizeRecordList: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/orders/reward/history?access_token=" +
-					utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size,
+					utils.storage.get("access_token") + "&page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1432,7 +1470,7 @@ define(
 				$.ajax({
 					url: window.API_URL + "/auctions" + "/" + param.auction_id +
 					"?access_token=" + utils.storage.get("access_token") +
-					"&auction_date_id=" + param.auction_date_id,
+					"&auction_date_id=" + param.auction_date_id + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1447,7 +1485,7 @@ define(
 			getDuobaoInfo: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/auctions/" + param.good_no +
-					"?access_token=" + utils.storage.get("access_token"),
+					"?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1462,7 +1500,7 @@ define(
 			shoppingCartAdd: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/shopping_carts/increase?access_token=" +
-					utils.storage.get("access_token"),
+					utils.storage.get("access_token") + html,
 					type: "POST",
 					data: param,
 					dataType: 'json',
@@ -1479,7 +1517,7 @@ define(
 			getPrizeDetail: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/orders/" + param.order_id + "/reward/history?access_token=" +
-					utils.storage.get("access_token"),
+					utils.storage.get("access_token") + html,
 					type: "GET",
 					success: function (data) {
 						typeof success == 'function' && success(data);
@@ -1494,7 +1532,7 @@ define(
 			receiveImmediately: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/orders/" + param.order_id + "/reward/receive?access_token=" +
-					utils.storage.get("access_token"),
+					utils.storage.get("access_token") + html,
 					type: "POST",
 					data: param.formData,
 					success: function (data) {
@@ -1510,7 +1548,7 @@ define(
 			confirmReceipt: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/orders/" + param.order_id + "/receipt?access_token=" +
-					utils.storage.get("access_token"),
+					utils.storage.get("access_token") + html,
 					type: "POST",
 					success: function (data) {
 						typeof success == 'function' && success(data);
@@ -1528,7 +1566,7 @@ define(
 					"?access_token=" + utils.storage.get("access_token") +
 					"&type=" + param.type +
 					"&page=" + param.page +
-					"&page_size=" + param.page_size,
+					"&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1546,7 +1584,7 @@ define(
 				$.ajax({
 					url: window.API_URL + "/orders/" + param.order_id +
 					"/auctions/history" +
-					"?access_token=" + utils.storage.get("access_token"),
+					"?access_token=" + utils.storage.get("access_token") + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1561,7 +1599,7 @@ define(
 			//修改性别
 			genderModify: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/gender?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/gender?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1577,7 +1615,7 @@ define(
 			//创建晒单
 			setUpShareOrder: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/shares/" + param.order_id + "?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/shares/" + param.order_id + "?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1609,7 +1647,7 @@ define(
 			//查询省份
 			getProvinces: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/areas/provinces",
+					url: window.API_URL + "/areas/provinces" + html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1654,7 +1692,7 @@ define(
 			//删除收货地址
 			deleteAddress: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/addresses/delete/" + param.id + "?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/addresses/delete/" + param.id + "?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -1669,7 +1707,7 @@ define(
 			//确认转卖
 			confirmResell: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/reward/resale?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_id + "/reward/resale?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1685,7 +1723,7 @@ define(
 			//收回转卖
 			takeBack: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/reward/callback?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_id + "/reward/callback?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -1700,7 +1738,7 @@ define(
 			//计算下单金额 购物车
 			calculateOrderAmount: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/auctions/settlement?access_token=" + utils.storage.get("access_token") + "&coupon_id=" + param.coupon_id,
+					url: window.API_URL + "/orders/auctions/settlement?access_token=" + utils.storage.get("access_token") + "&coupon_id=" + param.coupon_id + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1715,7 +1753,7 @@ define(
 			//提交购物车订单
 			submitShoppingOrder: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/auctions/settlement?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/auctions/settlement?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1732,7 +1770,7 @@ define(
 			getOrderList: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/orders/goods/history?access_token=" + utils.storage.get("access_token") + "&type=" + param.type + "&page=" + param.page
-					+ "&page_size=" + param.page_size,
+					+ "&page_size=" + param.page_size + html,
 					type: "GET",
 					dataType: 'json',
 					loadMask: false,
@@ -1748,7 +1786,7 @@ define(
 			//购买记录详情
 			getOrderInfo: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/goods/history?access_token=" + utils.storage.get("access_token") + "&type=" + param.type,
+					url: window.API_URL + "/orders/" + param.order_id + "/goods/history?access_token=" + utils.storage.get("access_token") + "&type=" + param.type + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1763,7 +1801,7 @@ define(
 			//删除订单
 			deledeOrder: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/delete?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_id + "/delete?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -1778,7 +1816,7 @@ define(
 			//取消订单
 			cancelOrder: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/cancel?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_id + "/cancel?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -1794,7 +1832,7 @@ define(
 			getFullTlement: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/orders/goods/settlement?access_token=" + utils.storage.get("access_token") + "&coupon_id=" + param.coupon_id
-					+ "&goods_id=" + param.goods_id + "&quantity=" + param.quantity,
+					+ "&goods_id=" + param.goods_id + "&quantity=" + param.quantity + html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1810,7 +1848,7 @@ define(
 			duoBaoGoodsFullSubmit: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/orders/goods/settlement?access_token=" +
-					utils.storage.get("access_token"),
+					utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -1826,7 +1864,7 @@ define(
 			//获取 关于我们、
 			getPageContent: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/page/content/" + param.key,
+					url: window.API_URL + "/page/content/" + param.key + html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1997,7 +2035,7 @@ define(
 			//更新头像
 			uploadImage: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/members/avatar?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/members/avatar?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -2013,7 +2051,7 @@ define(
 			//
 			getResalesList: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/resales?page=" + param.page + "&page_size=" + param.page_size,
+					url: window.API_URL + "/resales?page=" + param.page + "&page_size=" + param.page_size + html,
 					type: "GET",
 					loadMask: false,
 					success: function (data) {
@@ -2027,7 +2065,7 @@ define(
 
 			getResalesInfo: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/resales/" + param.resale_id,
+					url: window.API_URL + "/resales/" + param.resale_id + html1,
 					type: "GET",
 					success: function (data) {
 						typeof success == 'function' && success(data);
@@ -2041,7 +2079,7 @@ define(
 			//绑定手机号 ydb
 			ydbBindMobile:function(param, success, error){
 				$.ajax({
-					url: window.API_URL + "/invitation/bind",
+					url: window.API_URL + "/invitation/bind" + html1,
 					type: "POST",
 					data:param.formData,
 					success: function (data) {
@@ -2098,7 +2136,7 @@ define(
 			//中奖分享页面
 			getShareWinData:function(param, success, error){
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id +"/reward/share" ,
+					url: window.API_URL + "/orders/" + param.order_id +"/reward/share" + html1 ,
 					type: "GET",
 					success: function (data) {
 						typeof success == 'function' && success(data);

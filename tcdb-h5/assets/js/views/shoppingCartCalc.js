@@ -25,11 +25,11 @@ define(
 				//utils.showMenu();
 				couponId = utils.storage.get("shoppintCouponId");
 				utils.showPage($page, function () {
-					$page.empty().append(shoppingCartCalcTemplate);//页面清空 放入 当前页模板	
+					$page.empty().append(shoppingCartCalcTemplate);//页面清空 放入 当前页模板
 
-					$cartCalcContainer = $page.find(".cart_calc_container");	
-					$cartCalcItem = $page.find("#cart_calc_item");	
-					$footer = $page.find(".footer_shopping_cart");	
+					$cartCalcContainer = $page.find(".cart_calc_container");
+					$cartCalcItem = $page.find("#cart_calc_item");
+					$footer = $page.find(".footer_shopping_cart");
 
 					getShoppingCarts();
 				});
@@ -115,7 +115,7 @@ define(
 	                	window.history.go(-1);
 	                }
 				});
-			
+
 		};
 
 		//提交订单
@@ -130,11 +130,11 @@ define(
 			Api.submitShoppingOrder(param,function(successData){
 				var data = successData.result;
 				var shoppingOrderPay = {};//提交订单之后的信息
-                shoppingOrderPay.balance = data.balance ;           //梦想币余额              
-                shoppingOrderPay.current_time = data.current_time;  //当前时间             
-                shoppingOrderPay.expire_time = data.expire_time;  //过期时间              
-                shoppingOrderPay.need_pay = data.need_pay;         //应付金额       
-                shoppingOrderPay.order_sn = data.order_sn;         //订单序列号       
+                shoppingOrderPay.balance = data.balance ;           //梦想币余额
+                shoppingOrderPay.current_time = data.current_time;  //当前时间
+                shoppingOrderPay.expire_time = data.expire_time;  //过期时间
+                shoppingOrderPay.need_pay = data.need_pay;         //应付金额
+                shoppingOrderPay.order_sn = data.order_sn;         //订单序列号
 
                 utils.storage.set("shoppingOrderPay",JSON.stringify(shoppingOrderPay));
                 utils.storage.remove("shoppintCouponId");

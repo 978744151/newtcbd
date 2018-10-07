@@ -1,0 +1,117 @@
+<div class="duobao-info-css">
+
+    <section class="ui-container ui-content duobao_info_container" style="padding-bottom: 50px;">
+
+
+    </section>
+    <div class="integralBottom">
+        <button>exchange</button>
+    </div>
+</div>
+
+<script id="tpl1" type="text/template">
+
+
+    <section class="mxep_block" style="margin: 0;">
+
+        <div class="icon_line">
+            <img src="../../../assets/image/ic_back@3x.png" alt="" onclick="history.back();" width=24px
+                 height=24px;>
+            <!--<i class="ui-icon-return" ></i>-->
+            <!--<i class="ui-icon-shoppingCart">-->
+            <!--<div class="ui-badge shopping_cart_good_count">0</div>-->
+            <!--</i>-->
+
+            <img src="../../../assets/image/ic_fenxiang@3x.png" alt="" class="duobao_info_show" width=24px
+                 height=24px;>
+        </div>
+
+        <div class="swiper-container good_img_list" style="height: 250px;">
+            <div class="swiper-wrapper">
+                {{each listPics v i}}
+                <div class="swiper-slide">
+										<div class="item" style="height: 100%">
+												<img src="{{v}} " style="height: 100%">
+										</div>
+                </div>
+                {{/each}}
+
+            </div>
+
+            <!-- 如果需要分页器 -->
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+    </section>
+
+    <section class="mxep_block bg_white ui-all-whitespace ui-margin-b-20">
+
+        <div class="bg_white good_name" style="font-size: 16px;">
+           {{goodsName}}
+        </div>
+
+        <div class="ui-row announced_status_container" >
+
+            <div class="ui-row ui-margin-tb announced_status announced_not_start_info">
+
+                <div class="ui-row ui-margin-b ui-txt-line-height-25  unit_price"
+                     data-unit_price="10" style="display: flex;justify-content: space-between">
+                    <span>
+                        <span style="color: #FF7400 ">{{exchangePonit}}
+										</span>integral
+                    </span>
+                    <span>
+                        <span>{{remain}}/</span><span style="color:#3f3f3f;">{{stock}} left</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!--<section class="mxep_block bg_white ui-margin-b-20">-->
+            <!--<ul class="ui-list ui-list-link other_list">-->
+                <!--<li class="" data-href="imgTxtDetail">-->
+                    <!--<div class="ui-avatar">-->
+                        <!--<span style="background-image:url('assets/image/announced/img_details_image@2x.png')"></span>-->
+                    <!--</div>-->
+                    <!--<div class="ui-list-info ui-border-t">-->
+                        <!--<h4 class="ui-nowrap name Graphic">图文详情</h4>-->
+                    <!--</div>-->
+                <!--</li>-->
+                <!--<li class="" data-id="2" data-href="pastAnnounced">-->
+                    <!--<div class="ui-avatar">-->
+                        <!--<span style="background-image:url('assets/image/announced/img_details_ever@2x.png')"></span>-->
+                    <!--</div>-->
+                    <!--<div class="ui-list-info ui-border-t">-->
+                        <!--<h4 class="ui-nowrap name">往期揭晓</h4>-->
+                    <!--</div>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</section>-->
+
+    </section>
+    <div style="height: 50px;width: 100%;line-height: 50px;border-bottom: 1px solid #eeeeee; 
+    background: white;color:#FF7400;text-align: center;">
+        <span>Detail</span>
+    </div>
+    <div class="imgText" style="width: 100%">
+
+    </div>
+
+</script>
+
+
+<style>
+    .weui_dialog_bd {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .weui_dialog_bd span {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    .imgText img{
+        width: 100%;
+    }
+</style>

@@ -24,7 +24,7 @@ define(
 				//utils.showMenu();
 				utils.showPage($page, function () {
 					$page.empty().append(duobaoInfoTemplate);
-
+					console.log(good_no);
 					$good_no = good_no;
 					$duobao_info_item = $("#duobao_info_item");
 					$attend_record_item = $("#attend_record_item");
@@ -238,7 +238,7 @@ define(
 			var param = {
 				good_no: $good_no
 			};
-
+			console.log(param)
 			Api.getDuobaoInfo(
 				param,
 				function (data) {

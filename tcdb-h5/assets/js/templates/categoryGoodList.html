@@ -1,109 +1,106 @@
-
 <div class="category-good-css">
-	<header class="ui-header ui-header-css ui-header-css ui-header-positive ui-border-b">
-		<img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();" width=24px height=24px;>
-			<!--<i class="ui-icon-return category-good-back" onclick="history.back();"></i>-->
-			<h1 class="ui-txt-default name ui_header_name category-good-name"></h1>
-			<i class="ico_img icon_shopping_cart to_shopping_cart">
-					<div class="ui-badge shopping_cart_good_count">0</div>
-			</i>
+    <header>
+        <img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();"
+             width=24px height=24px;>
+        <!--<i class="ui-icon-return category-good-back" onclick="history.back();"></i>-->
+        <h1 class="ui-txt-default name ui_header_name category-good-name"></h1>
+        <!--<i class="ico_img icon_shopping_cart to_shopping_cart">-->
+            <!--<div class="ui-badge shopping_cart_good_count">0</div>-->
+        <!--</i>-->
 
-	</header>
-	<script id="good_list_banner" type="text/template">
-		<div class="swiper-container banner_img_list">
-				<div class="swiper-wrapper">
-				<%
-		if(carouses && carouses.length > 0) {
-			_.each(carouses,function(item){
+    </header>
+    <div class="swiper-container banner_img_list main-css">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" data-href="<%=item.link%>">
 
-				%>
-				<div class="swiper-slide" data-href="<%=item.link%>">
+                                <span>
+                                    <img src="http://img.alicdn.com/imgextra/i2/1115488308/O1CN012BF6ybduobjwOIM_!!1115488308.jpg_430x430q90.jpg" data-echo="<%=item.pic%>">
+                                </span>
 
-						<span>
-						<img src="../../assets/image/icon/ico_public_shoppingcart@2x.png" data-echo="<%=item.pic%>">
-						</span>
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination" style="bottom:50px;"></div>
+        <!-- 如果需要导航按钮 -->
+        <!--<div class="swiper-button-prev"></div>-->
+        <!--<div class="swiper-button-next"></div>-->
+        <!-- 如果需要滚动条 -->
+        <!--<div class="swiper-scrollbar"></div>-->
 
-						</div>
-						<%});
-		}%>
-		</div>
-			<!-- 如果需要分页器 -->
-		<div class="swiper-pagination" style="bottom:50px;"></div>
-					<!-- 如果需要导航按钮 -->
-				<!--<div class="swiper-button-prev"></div>-->
-				<!--<div class="swiper-button-next"></div>-->
-					<!-- 如果需要滚动条 -->
-				<!--<div class="swiper-scrollbar"></div>-->
+    </div>
 
-				</div>
-	</script>
+    <script id="good_list_banner" type="text/template">
 
 
-	<section class="ui-container ui-content">
 
-			<section class="mxep_block good_list_container">
+    </script>
 
-					<!--<div class="ui-row ui-whitespace ui-txt-line-height-50 good_list_txt">-->
 
-							<!--<span class="f_left">-->
-									<!--共<span class="category_good_count">0</span>件商品-->
-							<!--</span>-->
+    <section class="ui-container ui-content">
 
-							<!--<span class="ui-txt-red-1 f_right all_to_shopping_cart">全部加入清单</span>-->
+        <section class="mxep_block good_list_container">
 
-					<!--</div>-->
-					<div class="good_list_container_div ">
-						<ul class="ui-list-active ui-list-cover ui-border-tb good_list">
+            <!--<div class="ui-row ui-whitespace ui-txt-line-height-50 good_list_txt">-->
 
-						</ul>
-					</div>
-			</section>
+            <!--<span class="f_left">-->
+            <!--共<span class="category_good_count">0</span>件商品-->
+            <!--</span>-->
 
-	</section>
+            <!--<span class="ui-txt-red-1 f_right all_to_shopping_cart">全部加入清单</span>-->
+
+            <!--</div>-->
+            <div class="good_list_container_div ">
+                <ul class="ui-list-active ui-list-cover ui-border-tb good_list">
+
+                </ul>
+            </div>
+        </section>
+
+    </section>
 </div>
 <script id="good_list_item" type="text/template">
 
-  <% if(_.size(data) > 0) {
-       _.each(data,function(item){
-       var percentage = (item.target - item.remain)/item.target*100 + "%";
-   %>
-<li class="ui-border-t announced_good_list" data-id="<%=item.id%>">
-		<div class="ui-list-img" style="width: 100%;height: 172px;display: inline-block;margin-top: 0px;">
-				<!-- <span style="background-image:url(http://placeholder.qiniudn.com/200x136)"></span> -->
-				<span style="background-image:url(<%=item.thumb%>);background-position: center;background-size: contain"></span>
-				<span class="ui-txt-center f12 ui-txt-white special_offer_area "><%=item.label%></span>
-				<p class="ui-nowrap-multi f14 good_name"><%=item.name%></p>
-		</div>
+    <% if(_.size(data) > 0) {
+    _.each(data,function(item){
+    var percentage = (item.target - item.remain)/item.target*100 + "%";
+    %>
+    <li class="ui-border-t announced_good_list" data-id="<%=item.id%>">
+        <div class="ui-list-img" style="width: 100%;height: 172px;display: inline-block;margin-top: 0px;">
+            <!-- <span style="background-image:url(http://placeholder.qiniudn.com/200x136)"></span> -->
+            <span style="background-image:url(<%=item.thumb%>);background-position: center;background-size: contain"></span>
+            <span class="ui-txt-center f12 ui-txt-white special_offer_area "><%=item.label%></span>
+            <p class="ui-nowrap-multi f14 good_name"><%=item.name%></p>
+        </div>
 
-		<div class="ui-list-info cate-list-info" data-id="<%=item.id%>" style="display: flex;justify-content: space-between;">
+        <div class="ui-list-info cate-list-info" data-id="<%=item.id%>"
+             style="display: flex;justify-content: space-between;">
 
-				<div class="good_crowd-funding_process">
-						<div class="ui-row f12 ui-txt-muted good_crowd-funding_count">
+            <div class="good_crowd-funding_process">
+                <div class="ui-row f12 ui-txt-muted good_crowd-funding_count">
 
-							<!--<span class="" style="float:left">-->
-							总需
-							<span class="good_total_count"><%=item.target%></span>
-							<!--</span>-->
+                    <!--<span class="" style="float:left">-->
+                    总需
+                    <span class="good_total_count"><%=item.target%></span>
+                    <!--</span>-->
 
-							<!--<span style="float:right">-->
-							剩余
-							<span class="good_surplus_count"><%=item.remain%></span>
-							<!--</span>-->
+                    <!--<span style="float:right">-->
+                    剩余
+                    <span class="good_surplus_count"><%=item.remain%></span>
+                    <!--</span>-->
 
-						</div>
-						<div class="ui-progress">
-								<!-- <span style="width:50%"></span> -->
-								<span style="width:<%=percentage%>"></span>
-						</div>
+                </div>
+                <div class="ui-progress">
+                    <!-- <span style="width:50%"></span> -->
+                    <span style="width:<%=percentage%>"></span>
+                </div>
 
 
+            </div>
 
-				</div>
+            <i class="add_shopping_cart">GO</i>
+        </div>
+    </li>
 
-				<i class="add_shopping_cart">GO</i>
-		</div>
-	</li>
+    <%})}%>
 
-	<%})}%>
-	
 </script>

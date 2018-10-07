@@ -162,7 +162,7 @@
 						<!--<div class="swiper-scrollbar"></div>-->
 
 				</div>
-
+				<!-- 活动页面  已删-->
 				<div class="ui-justify ui-whitespace" style="display: none">
 
 
@@ -173,21 +173,15 @@
 								</i>
 				<!--活动 active-->
 								<ul class="bonus_record_list ">
-										<%
-										if(rewards && rewards.length > 0) {
-										_.each(rewards,function(item){
 
-										%>
 										<li class="ui-nowrap ui-whitespace">
 												<span>恭喜</span>
-												<span class="user_nickname"><%=item.nickname%></span>
+												<span class="user_nickname"></span>
 												<span>获得</span>
 												<span class="prize_name">
-													<%=item.auction_name%>
+
 												</span>
 										</li>
-										<%});
-										}%>
 
 								</ul>
 						</div>

@@ -1902,7 +1902,15 @@ h6, .ui-txt-tips {
 .ui-btn-group button:first-child {
 	margin-left: 10px;
 }
+.text-center{
+	height:40px;
+	line-height:40px;
+	color:#979797;
+	font-size:14px;
+	text-align:center;
 
+
+}
 .ui-tips {
 	padding: 20px 15px;
 	text-align: center;

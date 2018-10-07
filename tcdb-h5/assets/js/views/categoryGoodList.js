@@ -16,6 +16,7 @@ define(['zepto', 'underscore', 'backbone',  'swiper', 'echo',
         var $pageNum; //页码
         var $pageSize; //每页记录数
         var $categoryId;
+        var $cateBanner
         var categoryGoodListView = Backbone.View.extend({
             el: $page,
             render: function(id) {
@@ -30,11 +31,10 @@ define(['zepto', 'underscore', 'backbone',  'swiper', 'echo',
                         $goodListItem = $page.find("#good_list_item");
                         $categoryGoodCount = $page.find(".category_good_count");
                         $shoppingCartGoodCount = $page.find(".shopping_cart_good_count");
-
+                        $cateBanner = $page.find('.good_list_banner')
                         $uiHeaderName.html(utils.storage.get("categoryGoodName"));
 
                         $categoryId = id;
-
                         getShoppingCartNumber();
 
                         //初始化dropload插件
@@ -118,7 +118,11 @@ define(['zepto', 'underscore', 'backbone',  'swiper', 'echo',
             }
 
             var param = {categoryId:$categoryId, page:$pageNum, page_size:$pageSize};
+            var param1 = {categoryId:$categoryId}
+            Api.getCategoriesBanner(param1, function (successData) {
+                console.log(successData)
 
+            })
             Api.getCategoriesList(param, function(successData){
 
                 if(successData.result.data.length>0){

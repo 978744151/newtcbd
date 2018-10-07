@@ -47,6 +47,10 @@ define([
 			//图文详解
 			'imgTxtDetail': 'loadImgTxtDetailPage',
 
+			//积分商品
+			'integralShop':'loadIntegralShop',
+			//积分商品
+			'integralShopCalc(/:good_no)':'loadIntegralShopCalc',
 			//发现
 			'find': 'loadFindPage',
 
@@ -324,6 +328,24 @@ define([
 					Views.languageView = new language();
 				}
 				Views.languageView.render();
+			});
+		},
+		loadIntegralShop: function () {
+			utils.hideMenu();
+			requirejs(['views/integralShop'], function (integralShop) {
+				if (!Views.integralShopView) {
+					Views.integralShopView = new integralShop();
+				}
+				Views.integralShopView.render();
+			});
+		},
+		loadIntegralShopCalc: function (good_no) {
+			utils.hideMenu();
+			requirejs(['views/integralShopCalc'], function (integralShopCalc) {
+				if (!Views.integralShopCalcView) {
+					Views.integralShopCalcView = new integralShopCalc();
+				}
+				Views.integralShopCalcView.render(good_no);
 			});
 		},
 		//摇骰子
@@ -764,13 +786,13 @@ define([
 			});
 		},
 
-		loadMyIntegralPage: function () {
+		loadMyIntegralPage: function (id) {
 			utils.hideMenu();
 			requirejs(['views/myIntegral'], function (myIntegral) {
 				if (!Views.myIntegralView) {
 					Views.myIntegralView = new myIntegral();
 				}
-				Views.myIntegralView.render();
+				Views.myIntegralView.render(id);
 			});
 		},
 
