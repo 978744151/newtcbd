@@ -1,0 +1,159 @@
+
+<div class="order-confirm-css">
+    <header class="ui-header ui-header-positive ui-border-b">
+
+        <img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();" width=24px height=24px;>
+        <h1 class="ui-txt-default name">确认订单</h1>
+
+    </header>
+
+    <footer class="ui-footer bg_white" style="height: auto;">
+
+        <div class="ui-whitespace ui-border-t">
+
+		    <span class=" ui-txt-line-height-56">
+		    		<span>total:</span>
+		    		<span style="color: #FF7400;">
+                        <span class="good_total_price" >244 </span> integral
+                    </span>
+		    </span>
+
+            <div class="bg-orange ui-txt-white btn_pay" style="padding: 0px 15px">exchange</div>
+
+        </div>
+    </footer>
+
+    <section class="ui-container ui-content">
+
+        <section class="mxep_block">
+
+            <div class="bg_white ui-margin-b-20 ui-all-whitespace user_address_info" data-address="1">
+
+
+                <div class="ui-row ui-txt-line-height-40 ">
+                    <span class="user_phone" style="text-alige:center">+添加收获地址</span>
+                </div>
+
+            </div>
+
+            <div class="bg_white ui-margin-b-20 ui-all-whitespace good-info">
+
+
+
+            </div>
+            <div class="order_settlement_container">
+                <!--<div class="bg_white ui-margin-b-20 ui-all-whitespace discount_list">-->
+
+                    <!--<div class="ui-row ui-txt-line-height-44 ui-border-b choose_coupon">-->
+
+                        <!--<span class="">红包</span>-->
+								<!--<span class="f_right f14 ui-txt-muted" style="margin-right: 35px;">-->
+										<!--<span>你没有使用红包</span>-->
+										<!--<span class="coupon_name">去使用</span>-->
+								<!--</span>-->
+                        <!--<i class="ui-icon-arrow"></i>-->
+
+                    <!--</div>-->
+
+                    <!--<div class="ui-row ui-txt-line-height-44 ">-->
+
+                        <!--<span class="">其他抵扣</span>-->
+								<!--<span class="f_right f14 ui-txt-muted">-->
+										<!--已提前支付10梦想币-->
+								<!--</span>-->
+
+                    <!--</div>-->
+
+                <!--</div>-->
+
+                <div class="bg_white ui-margin-b-20 ui-all-whitespace ">
+
+                    <div class="ui-row ui-txt-line-height-30 ">
+
+                        <span class="">total:</span>
+					<span style="color: #FF7400;">
+                        <span class="  good_total_price"  >
+							244
+					    </span> integral
+                    </span>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+</div>
+<script id="user_address_item" type="text/template">
+
+    <div class="ui-row ui-txt-line-height-40 user_address_id" data-id="<%=id%>">
+        <span class="user_name"><%=consignee%></span>
+        <span class="user_phone"><%=mobile%></span>
+        <%if(is_default == 1){%>
+        <span class="f12 spn_bg_orange txt_default">默认</span>
+        <%}%>
+
+    </div>
+
+    <div class="ui-row f14 ui-txt-muted ui-txt-line-height-20 user_address has_address">
+        <%=street%>
+    </div>
+
+</script>
+<script id="order_settlement_item" type="text/template">
+    <div class="bg_white ui-margin-b-20 ui-all-whitespace discount_list">
+
+
+
+    </div>
+
+    <div class="bg_white ui-margin-b-20 ui-all-whitespace ">
+
+        <div class="ui-row ui-txt-line-height-30 ">
+            <span class="">商品合计</span>
+            <span class="f_right ui-txt-pink good_total_price" data-price="244">
+                    ￥<%=(total_money).toFixed(2)%>
+            </span>
+        </div>
+    </div>
+
+</script>
+
+<script id="good-info-item" type="text/template">
+    <div class="good_img" style="width: 80px;height: 80px;">
+        <img class="echo_img" src="{{pic}}"  >
+
+    </div>
+
+    <div class="good_info">
+
+        <div class="ui-nowrap-flex ui-txt-line-height-24 ui-margin-t-20 good_name">
+            span{{goodsName}}
+        </div>
+        <div style="margin-top:10px;display: flex;justify-content: space-between" class="integralShop">
+            <dii>
+                <span style="color:#FF7400;">{{exchangePonit}}</span>   <span>integral</span>
+            </dii>
+            <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' style="height: 30px;">
+                <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                <input class="mui-numbox-input" type="number" />
+                <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+            </div>
+            <!--<input type="text" class="good_count shopping_cart_count"/>-->
+        </div>
+
+
+    </div>
+</script>
+<style>
+    .good_info .integralShop .spinner {
+        width: 120px;
+        height: 30px;
+        margin-top: 0px
+    }
+    .spinner .value{
+        background: rgb(248, 248, 248);
+        width: 100%;
+    }
+</style>

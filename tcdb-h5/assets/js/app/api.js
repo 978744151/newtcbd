@@ -440,6 +440,18 @@ define(
 					}
 				});
 			},
+			IntegralShopPay:function(params, success, error){
+				$.ajax({
+					url: window.API_URL + "/exchangeGoods/exchange?access_token=" + utils.storage.get("access_token") + html + "&id="+ params.id + "&num=" +params.num+ "&address_id=" + params.address_id,
+					type: "post",
+					success: function (data) {
+						typeof success == 'function' && success(data);
+					},
+					onError: function (data) {
+						typeof error == 'function' && error(data);
+					}
+				});
+			},
 			getIntegralExplainData: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/points/intros"+html1,

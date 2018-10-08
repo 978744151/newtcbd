@@ -56,7 +56,7 @@ define(['zepto', 'underscore', 'backbone',
 			},
 			events: {
 				//保存地址
-				"touchend .btn_save": "saveAddresses",
+				"tap .btn_save": "saveAddresses",
 				// 更新城市列表
 				"change #provinceId": "updateCity",
 				// 更新区列表
@@ -64,7 +64,7 @@ define(['zepto', 'underscore', 'backbone',
 				// 点击默认状态
 				'tap .ui-switch input': 'toggleDefault',
 				// 删除地址
-				'touchend .btn_del': 'deleteAddress'
+				'tap .btn_del': 'deleteAddress'
 			},
 
 			saveAddresses: function (e) {

@@ -51,6 +51,11 @@ define([
 			'integralShop':'loadIntegralShop',
 			//积分商品
 			'integralShopCalc(/:good_no)':'loadIntegralShopCalc',
+			//积分商品订单
+			'integralShopOrder(/:good_no)':'loadIntegralShopOrder',
+			//积分商品订单
+			'integralShopStatus(/:status)':'loadIntegralShopStatus',
+
 			//发现
 			'find': 'loadFindPage',
 
@@ -346,6 +351,24 @@ define([
 					Views.integralShopCalcView = new integralShopCalc();
 				}
 				Views.integralShopCalcView.render(good_no);
+			});
+		},
+		loadIntegralShopOrder: function (good_no) {
+			utils.hideMenu();
+			requirejs(['views/integralShopOrder'], function (integralShopOrder) {
+				if (!Views.integralShopOrderView) {
+					Views.integralShopOrderView = new integralShopOrder();
+				}
+				Views.integralShopOrderView.render(good_no);
+			});
+		},
+		loadIntegralShopStatus:function (good_no) {
+			utils.hideMenu();
+			requirejs(['views/integralShopStatus'], function (integralShopStatus) {
+				if (!Views.integralShopStatusView) {
+					Views.integralShopStatusView = new integralShopStatus();
+				}
+				Views.integralShopStatusView.render(good_no);
 			});
 		},
 		//摇骰子

@@ -12,6 +12,7 @@ define(
         var $page = $("#integralShopCalc-page");
 
         var ids;
+        var remain = null;
         var integralShopCalcView = Backbone.View.extend({
             el: $page,
             render: function (id) {
@@ -25,6 +26,7 @@ define(
                     Api.getIntegralShopCalc(id,function(data){
                         var data = data.result;
                         console.log(data);
+                        remain = data.remain
                         listPics = data.listPic.split(',')
                         data.listPics = listPics
                         var html = artTemplate("tpl1", data);
@@ -33,7 +35,14 @@ define(
                         initSwiper()
                     })
                 }
-
+                $('.integralBottom').on('tap', function () {
+                    console.log(remain)
+                    if(remain == 0){
+                        mui.toast('没有库存')
+                        return
+                    }
+                    window.location.hash = "integralShopOrder/"+id;
+                })
             },
         });
 

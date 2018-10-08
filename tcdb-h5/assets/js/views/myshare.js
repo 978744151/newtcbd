@@ -2,10 +2,10 @@ define(
     ['zepto', 'underscore', 'backbone', 'dropload',
         'swiper', 'echo', 'app/api', 'app/refreshtoken',
         'app/utils', 'app/scroll',
-        'text!templates/share.html'
+        'text!templates/myshare.html'
     ],
 
-    function ($, _, Backbone, Dropload, Swiper, echo, Api, Token, utils, scroll, shareTemplate) {
+    function ($, _, Backbone, Dropload, Swiper, echo, Api, Token, utils, scroll, myshareTemplate) {
 
         var $page = $("#my-share");
         var flag;//是否是个人晒单 1：是 0 不是 默认：0
@@ -17,11 +17,11 @@ define(
         var $shareOrderListContainer;
         var $shareOrderItem;
 
-        var shareView = Backbone.View.extend({
+        var myshareView = Backbone.View.extend({
             el: $page,
             render: function (good_no) {
                 utils.showPage($page, function () {
-                    $page.empty().append(shareTemplate);
+                    $page.empty().append(myshareTemplate);
                     var type = utils.getStor()
                     $('.name').html(lan(type).mainPage.discovery)
                     flag =0;
@@ -172,6 +172,6 @@ define(
         };
 
 
-        return shareView;
+        return myshareView;
 
     });

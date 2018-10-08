@@ -15,6 +15,7 @@ define(
             render: function () {
                 utils.showPage($page, function () {
                     $page.empty().append(integralShop);
+                    console.log('riset');
                     mui('.mui-scroll-wrapper').scroll({
                         deceleration: 0.0006, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
                         indicators: false,//去除滚动条
@@ -40,7 +41,7 @@ define(
                         setTimeout(function () {
                             mui('#pull').pullRefresh().endPulldownToRefresh();
                             flag = false
-                            params = {page : 1,page_size:8}
+                            params = {page : 1,page_size:2}
                             mui('#pull').pullRefresh().refresh(true);
                             renders(params)
                         }, 700)
@@ -55,11 +56,12 @@ define(
                 });
             },
         })
-        var params = {page : 1,page_size:8}
+        var params = {page : 1,page_size:2}
         var thisgoods = [];
         var flag = null;
         function renders(params){
             Api.getIntegralShop(params, function (data) {
+                console.log(123123);
                 var data  = data.result;
                 if(thisgoods != [] && params.page != 1){
                     thisgoods = thisgoods.concat(data.data.list);
@@ -79,6 +81,11 @@ define(
                 if(flag == true){
                     $('.ui-container').append(' <div class="text-center"> - 我已经到底了 - </div>')
                 }
+                mui('.mui-scroll-wrapper').scroll({
+                    deceleration: 0.0006, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+                    indicators: false,//去除滚动条
+                    start:98 + '%'
+                });
             })
         }
         $('body').on('tap','.announced_good_list', function (e) {
