@@ -27,13 +27,13 @@ define(['zepto', 'underscore', 'backbone',
 				//退出
 				"tap .btn_sign_out": "dropOut",
 
-				"tap ul > li": "GoPage",//进入 展示页面
+				"tap .notifications": "GoPage",//进入 展示页面
 				"tap .languageSelection": "languageSelection",
 			},
 			languageSelection: function () {
 				console.log(1);
 				//utils.storage.remove("loginSuccess");
-				window.location.href = window.ctx + 'language.html'
+				window.location.href = window.ctx + '/language.html'
 			},
 			dropOut: function () {
 				//utils.storage.remove("loginSuccess");

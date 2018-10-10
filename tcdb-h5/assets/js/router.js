@@ -55,7 +55,8 @@ define([
 			'integralShopOrder(/:good_no)':'loadIntegralShopOrder',
 			//积分商品订单
 			'integralShopStatus(/:status)':'loadIntegralShopStatus',
-
+			//积分商品订单
+			'integralShopRecord':'loadIntegralShopRecord',
 			//发现
 			'find': 'loadFindPage',
 
@@ -369,6 +370,15 @@ define([
 					Views.integralShopStatusView = new integralShopStatus();
 				}
 				Views.integralShopStatusView.render(good_no);
+			});
+		},
+		loadIntegralShopRecord:function () {
+			utils.hideMenu();
+			requirejs(['views/integralShopRecord'], function (integralShopRecord) {
+				if (!Views.integralShopRecordView) {
+					Views.integralShopRecordView = new integralShopRecord();
+				}
+				Views.integralShopRecordView.render();
 			});
 		},
 		//摇骰子

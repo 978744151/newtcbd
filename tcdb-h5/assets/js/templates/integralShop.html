@@ -1,21 +1,23 @@
-    <div class="mui-scroll-wrapper" id="pull" >
+<section class="mxep_block ui-margin-b-20 ui-txt-center user_info_container My_center"style="padding-top:30px;padding-bottom: 30px;" >
+    <img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();" width=24px height=24px;>
+    <span class="exchangeGoods">record</span>
+    <!--<i class="ui-icon-set ui-txt-white"></i>-->
+    <!--<i class="ui-icon-message"></i>-->
+    <div class="usser_info_contaniter" >
+        <div class="ui-margin-b-5 user_head_img">
+            <img src="{{data.avatar}}">
+        </div>
+        <div class="myIntegral"><span>Integral：</span><span class="f14 ui-row  point"></span></div>
+    </div>
+</section>
+<div class="mui-scroll-wrapper" id="pull" style="top: 180px;">
         <div class="mui-scroll  integral_content" >
 
        </div>
     </div>
 
 <script id="tpl" type="text/html">
-    <section class="mxep_block ui-margin-b-20 ui-txt-center user_info_container My_center"style="padding-top:30px;padding-bottom: 30px;" >
-        <img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();" width=24px height=24px;>
-        <!--<i class="ui-icon-set ui-txt-white"></i>-->
-        <!--<i class="ui-icon-message"></i>-->
-        <div class="usser_info_contaniter" >
-            <div class="ui-margin-b-5 user_head_img">
-                <img src="{{data.avatar}}">
-            </div>
-            <div class="myIntegral"><span>Integral：</span><span class="f14 ui-row">{{data.point}}</span></div>
-        </div>
-    </section>
+
     <section class="ui-container ui-content">
         <section class="mxep_block good_list_container">
             <!--<div class="ui-row ui-whitespace ui-txt-line-height-50 good_list_txt">-->
@@ -51,3 +53,14 @@ color: #FF7400;"><%=item.exchangePonit%> <span style="color:#3A3A3A;">integral</
         </section>
     </section>
 </script>
+<style>
+    .exchangeGoods{
+        position: absolute;
+        right: 12px;
+        top: 12px;
+        color: white;
+        padding: 1px 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+    }
+</style>

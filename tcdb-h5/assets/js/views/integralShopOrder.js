@@ -55,14 +55,22 @@ define(
                 };
                 function goPay(){
                     $('.btn_pay').on('tap', function () {
-                        var params = {
-                            num:mui('.mui-numbox').numbox().getValue(),
-                            address_id :utils.storage.get("orderConAddId"),
-                            id:shopId
-                        }
+                        var formDatas =
+                            //num:mui('.mui-numbox').numbox().getValue(),
+                            //address_id :utils.storage.get("orderConAddId"),
+                            //id:shopId
+                            "num=" + mui('.mui-numbox').numbox().getValue() + "&" +
+                            "address_id=" + utils.storage.get("orderConAddId") + "&" +
+                            "id=" +  shopId + "&access_token="+utils.storage.get("access_token") +  "&source=1"
+                        var params = {formDatas:formDatas}
                         console.log(params);
                         Api.IntegralShopPay(params, function (data) {
-                            window.location.hash = "integralShopStatus/1"
+                            if(data.err_code == 0){
+                                window.location.hash = "integralShopStatus/1"
+                            }else{
+                                window.location.hash = "integralShopStatus/2"
+                            }
+                            mui.toast(data.result)
                         },function () {
                             window.location.hash = "integralShopStatus/2"
                         })

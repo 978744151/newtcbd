@@ -93,7 +93,7 @@ define(['zepto', 'underscore', 'backbone',
 
                 if(dataHref){
 
-                    window.location.hash = dataHref;
+                    window.location.href = window.ctx + "/#" + dataHref;
                 }
 
                 

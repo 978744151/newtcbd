@@ -75,7 +75,7 @@
                         utils.storage.set("expire_time",successData.result.expire_time);
                         //返回到上一页
                         //history.back();
-
+                        //return
                         //返回
                         window.location.href = window.ctx + utils.storage.get("loginSuccessBack");
                         return;

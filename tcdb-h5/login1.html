@@ -36,7 +36,7 @@
     <section class="loginBody">
         <div class="login_logo">
             <img src="assets/image/ic_logo@3x.png" alt="">
-
+            <img src="assets/image/ic_slogen@3x.png" alt="">
         </div>
         <div class="login_bottom">
             <div class="loginWidth">
@@ -46,20 +46,59 @@
             </div>
             <div class="loginDl">
                 <img src="assets/image/ic_dline@3x.png" alt="">
-                <img src="assets/image/ic_dfb@3x.png" alt="">
+                <img src="assets/image/ic_dfb@3x.png" alt="" scope="public_profile,email" onclick="checkLoginState();">
                 <img src="assets/image/ic_dtt@3x.png" alt="">
             </div>
         </div>
-
+        <!--<fb:login-button scope="public_profile,email"   onlogin="checkLoginState();"></fb:login-button> &lt;!&ndash; 点击登录时触发checkLoginState()，此方法自定义 &ndash;&gt;-->
     </section>
-</section>
-<script type="text/javascript">
-    var stopMain = true;
-</script>
-<script src="../../assets/js/require.min.js" data-main="../../assets/js/main.js" ></script>
-<script type="text/javascript">
+    <div id="status">
+    </div>
 
-    requirejs(['views/login']);
+</section>
+<script src="assets/js/libs/zepto.min1.js"></script>
+<script type="text/javascript">
+     window.fbAsyncInit = function() {
+        　　FB.init({
+            　　appId :'173756896837472',
+                　　xfbml : true,
+                　　version : 'v2.6' //facebook登录版本
+        　　});
+         };
+      //异步引入Facebook sdk.js
+    (function(d, s, id){
+        　　var js, fjs = d.getElementsByTagName(s)[0];
+        　　if (d.getElementById(id)) {return;}
+        　　js = d.createElement(s); js.id = id;
+        　　js.src = "//connect.facebook.net/en_US/sdk.js";
+        　　fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+　　　　　　  var fbToken;
+              function checkLoginState(){
+                    FB.getLoginStatus(function(response) {
+                               statusChangeCallback(response);
+                           });
+                }
+            function statusChangeCallback(response) {
+                console.log(response)
+                    if (response.status === 'connected') {  //登陆状态已连接
+                               fbToken = response.authResponse.accessToken;
+                                getUserInfo();
+                            } else if (response.status === 'not_authorized') { //未经授权
+                                console.log('facebook未经授权');
+                            } else {
+                                console.log('不是登陆到Facebook;不知道是否授权');
+                            }
+                 }
+           //获取用户信息
+             function getUserInfo() {
+                    FB.api('/me', function(response) {
+                                //response.id / response.name
+                                console.log('Successful login for: ' + response.name);
+                                //把用户token信息交给后台
+                                self.location= '/home/login.fbLogin.do?accessToken='+fbToken;
+                            });
+                  }
 </script>
 </body>
 </html>

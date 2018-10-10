@@ -1,10 +1,10 @@
-define(['zepto', 'underscore', 'backbone',
+define(['zepto', 'cookie','underscore', 'backbone',
 		'swiper', 'echo', 'app/api', 'dropload',
 		'app/utils', 'app/scroll', 'app/basket',
 		'text!templates/main.html'
 	],
 
-	function ($, _, Backbone, Swiper, echo, Api, _dropload, utils, scroll, basket, mainTemplate) {
+	function ($,cookie, _, Backbone, Swiper, echo, Api, _dropload, utils, scroll, basket, mainTemplate) {
 
 
 
@@ -16,6 +16,25 @@ define(['zepto', 'underscore', 'backbone',
 		var droploadType;
 		var $dropload;
 		var $directionFlag;
+		var flag;
+		var time = date()
+		var days = localStorage.getItem("day") ? localStorage.getItem("day") : null
+		if(days && days == time){
+			flag = true
+		}else if(days && days != time){
+			flag = false
+			localStorage.setItem("day" , time)
+		}else{
+			flag = false
+			localStorage.setItem("day" , time)
+		}
+		function date(){
+			var date = new Date();
+			var year = date.getFullYear() // 年
+			var month = date.getMonth() + 1; // 月
+			var day  = date.getDate(); // 日
+			return year +"-" + month + "-" + day
+		}
 		var mainView = Backbone.View.extend({
 			el: $page,
 			render: function () {
@@ -58,7 +77,7 @@ define(['zepto', 'underscore', 'backbone',
 				"tap .icon_message": "myMessage",
 
 				"tap .to_shopping_cart":"shoppingCart",
-				
+
 
 
 			},
@@ -260,6 +279,17 @@ define(['zepto', 'underscore', 'backbone',
 					$dropload = null;
 					dropload.init();
 
+					flag ? $('.index_yy').hide() : $('.index_yy').show()
+					console.log(flag);
+					$('body').on('click', ".index_box_button",function () {
+						console.log(1)
+						console.log(successData.result.popup.link);
+						var link = successData.result.popup.link
+						window.locationtop.href = link
+					})
+					$('body').on('click', ".index_box_close img",function () {
+						$('.index_yy').hide()
+					})
 				},
 				function (errorData) {
 

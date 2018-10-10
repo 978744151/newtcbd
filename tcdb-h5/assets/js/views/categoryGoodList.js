@@ -23,8 +23,7 @@ define(['zepto', 'underscore', 'backbone',  'swiper', 'echo',
                 //utils.showMenu();
                 utils.showPage($page, function() {
                         $page.empty().append(categoryGoodListTemplate);
-
-                        $pageNum = 1;//页码
+                    $pageNum = 1;//页码
                         $pageSize =2;//每页记录数
                         $uiHeaderName = $page.find(".ui_header_name");
                         $goodListContainer = $page.find(".good_list");

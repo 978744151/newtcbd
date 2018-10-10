@@ -77,6 +77,13 @@
             font-size: 20px;
             color: #FFFFFF;
         }
+        .ic_back_return{
+            position: absolute;
+            top: 15px;
+            left:15px;
+            width: 24px;
+            height: 24px;
+        }
     </style>
 </head>
 <body>
@@ -99,13 +106,17 @@
         </div>
     </div>
 </section>
-<script src="assets/js/libs/zepto.min.js"></script>
+<script src="assets/js/libs/zepto.min1.js"></script>
 <script>
 $(function () {
+    console.log(1)
     window.ctx =  "http://localhost:801";
-    languageBottom()
-    function languageBottom() {
+        var lan = localStorage.getItem("lan");
+        if(lan){
+            $(".languageBox").append('<img src="../../../assets/image/ic_back@3x.png" alt="" class="ic_back_return" onclick="history.back();">')
+        }
         $('.languageBottom div').on('tap', function () {
+            console.log(2);
             console.log($(this));
             var $this = $(this);
             $this.addClass('active').siblings().removeClass('active')
@@ -121,7 +132,6 @@ $(function () {
             window.location.href = window.ctx + '#main';
 
         })
-    }
 })
 
 

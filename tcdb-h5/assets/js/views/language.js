@@ -35,7 +35,8 @@ define(
                 }else{
                     localStorage.setItem('lan',2)
                 }
-                window.location.hash = 'main'
+                console.log(window.ctx)
+                window.top.location = window.ctx + '#main';
 
             })
         }

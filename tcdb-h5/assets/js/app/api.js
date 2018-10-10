@@ -442,8 +442,21 @@ define(
 			},
 			IntegralShopPay:function(params, success, error){
 				$.ajax({
-					url: window.API_URL + "/exchangeGoods/exchange?access_token=" + utils.storage.get("access_token") + html + "&id="+ params.id + "&num=" +params.num+ "&address_id=" + params.address_id,
+					url: window.API_URL + "/exchangeGoods/exchange?access_token=" + utils.storage.get("access_token"),
 					type: "post",
+					data:params.formDatas,
+					success: function (data) {
+						typeof success == 'function' && success(data);
+					},
+					onError: function (data) {
+						typeof error == 'function' && error(data);
+					}
+				});
+			},
+			IntegralShopRecord:function(params, success, error){
+				$.ajax({
+					url: window.API_URL + "/exchangeGoods/record?access_token=" + utils.storage.get("access_token")+ "&page=" + params.page + "&page_size=" + params.page_size+html,
+					type: "get",
 					success: function (data) {
 						typeof success == 'function' && success(data);
 					},
@@ -1674,7 +1687,7 @@ define(
 			//查询城市
 			getCity: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/areas/provinces/" + param.province_id + "/cities",
+					url: window.API_URL + "/areas/provinces/" + param.province_id + "/cities"+ html1,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1891,7 +1904,7 @@ define(
 			//查询订单支付信息
 			getOrderPayInfo: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/pay?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_id + "/pay?access_token=" + utils.storage.get("access_token")+ html,
 					type: "GET",
 					dataType: 'json',
 					success: function (data) {
@@ -1907,7 +1920,7 @@ define(
 			getDiceInfo: function (param, success, error) {
 				var url = window.API_URL + "/game/dice/issue/info" +
 					"?access_token=" + utils.storage.get("access_token") +
-					"&date_sn=" + param.date_sn;
+					"&date_sn=" + param.date_sn+ html;
 
 				//console.log("获取 骰子本期信息 url---"+url);
 
@@ -1933,7 +1946,7 @@ define(
 					"&chip_amount=" + param.chip_amount +
 					"&date_sn=" + param.date_sn +
 					"&dice_size=" + param.dice_size +
-					"&multiple=" + param.multiple,
+					"&multiple=" + param.multiple+ html,
 					type: "POST",
 					dataType: 'json',
 					data: param,
@@ -1950,7 +1963,7 @@ define(
 			getFruitInfo: function (param, success, error) {
 				var url = window.API_URL + "/game/guess/fruit/issue/info" +
 					"?access_token=" + utils.storage.get("access_token") +
-					"&date_sn=" + param.date_sn;
+					"&date_sn=" + param.date_sn+ html;
 
 				console.info("获取猜水果 URL：" + url);
 
@@ -1976,7 +1989,7 @@ define(
 						//	"&date_sn=" + param.date_sn;
 						//console.log("投注水果：" + url);
 
-					"?access_token=" + utils.storage.get("access_token");
+					"?access_token=" + utils.storage.get("access_token")+ html;
 				//console.log("投注水果 ------ url：" + url);
 
 				$.ajax({
@@ -2001,7 +2014,7 @@ define(
 			addNumberToShoppingCart: function (param, success, error) {
 				$.ajax({
 					url: window.API_URL + "/shopping_carts/" + param.auction_id +
-					"?access_token=" + utils.storage.get("access_token"),
+					"?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					data: param.formData,
@@ -2017,7 +2030,7 @@ define(
 			//收回转卖
 			TakeBackResellCash: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/reward/callback?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_id + "/reward/callback?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -2032,7 +2045,7 @@ define(
 			//确认收账
 			confirReceive: function (param, success, error) {
 				$.ajax({
-					url: window.API_URL + "/orders/" + param.order_id + "/reward/confirm/pay?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "/orders/" + param.order_id + "/reward/confirm/pay?access_token=" + utils.storage.get("access_token") + html,
 					type: "POST",
 					dataType: 'json',
 					success: function (data) {
@@ -2091,7 +2104,7 @@ define(
 			//绑定手机号 ydb
 			ydbBindMobile:function(param, success, error){
 				$.ajax({
-					url: window.API_URL + "/invitation/bind" + html1,
+					url: window.API_URL + "/invitation/bind" + html1 + html,
 					type: "POST",
 					data:param.formData,
 					success: function (data) {
@@ -2106,7 +2119,7 @@ define(
 			//查询PK房间信息 ydb
 			getPKRoomInfo:function(param, success, error){
 				$.ajax({
-					url: window.API_URL + '-api' + "/rooms/" + param.room_id,
+					url: window.API_URL + '-api' + "/rooms/" + param.room_id + html1,
 					type: "GET",
 					success: function (data) {
 						typeof success == 'function' && success(data);
@@ -2120,7 +2133,7 @@ define(
 			//邀请好友页的推荐商品
 			getInvitOauthGoods:function(param, success, error){
 				$.ajax({
-					url: window.API_URL + "-api" + "/auctions/recommends?page_size=" + param.page_size,
+					url: window.API_URL + "-api" + "/auctions/recommends?page_size=" + param.page_size + html,
 					type: "GET",
 					success: function (data) {
 						typeof success == 'function' && success(data);
@@ -2134,7 +2147,7 @@ define(
 			//查询统计信息 ydb
 			queryStatistics:function(param, success, error){
 				$.ajax({
-					url: window.API_URL + "game/wheelprizes/statistics?access_token=" + utils.storage.get("access_token"),
+					url: window.API_URL + "game/wheelprizes/statistics?access_token=" + utils.storage.get("access_token")+ html,
 					type: "GET",
 					success: function (data) {
 						typeof success == 'function' && success(data);

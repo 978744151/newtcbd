@@ -1,0 +1,104 @@
+<div class="my-order-css" >
+    <header class="ui-header ui-header-css ui-header-positive ui-border-b">
+        <img src="../../../assets/image/ic_back@3x.png" class="ic_back_return" alt="" onclick="history.back();"
+             width=24px height=24px;>
+        <!--<i class="ui-icon-return category-good-back" onclick="history.back();"></i>-->
+        <h1 class="ui-txt-default name">Integral Exchange</h1>
+
+    </header>
+    <div class="mui-scroll-wrapper" id="pulls"style="top: 45px;" >
+        <ul class="ui-list order_list order_all mui-scroll">
+
+        </ul>
+    </div>
+    <!--<section class="ui-container ui-content">-->
+
+        <!--<section class="mxep_block">-->
+
+            <!--<div class="ui-tab">-->
+
+                <!--&lt;!&ndash;<ul class="ui-tab-nav ui-border-b ui-margin-b-20">&ndash;&gt;-->
+                <!--&lt;!&ndash;<li class="current">全部</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>待付款</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>待发货</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>待收货</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+                <!--<ul class="ui-tab-content" style="width:400%">-->
+
+                    <!--<li class="current">-->
+
+                    <!--</li>-->
+
+                    <!--<li>-->
+
+                        <!--<ul class="ui-list order_list order_be_pay">-->
+
+
+                        <!--</ul>-->
+
+                    <!--</li>-->
+
+                    <!--<li>-->
+
+                        <!--<ul class="ui-list order_list order_be_send">-->
+
+
+                        <!--</ul>-->
+
+                    <!--</li>-->
+
+                    <!--<li>-->
+
+                        <!--<ul class="ui-list order_list order_be_receive">-->
+
+
+                        <!--</ul>-->
+
+                    <!--</li>-->
+
+                <!--</ul>-->
+
+            <!--</div>-->
+            <!--<div class="ui-row ui-txt-center ui-txt-line-height-25 myorder_hasno_data" style="display:none">-->
+                <!--没有数据哦！-->
+            <!--</div>-->
+        <!--</section>-->
+
+    </section>
+</div>
+<script id="record" type="text/html">
+    {{ each thisgoods v i}}
+    <li class="bg_white ui-margin-b-20 ui-whitespace order_item">
+
+
+        <div class="order_info ui-border-tb display-webkit-box">
+
+            <div class="good_img">
+                <!-- <span style="background-image: url(http://placeholder.qiniudn.com/190x284)"></span> -->
+                <img src="{{v.pic}}">
+            </div>
+
+            <div class="good_info">
+
+                <div class="ui-nowrap-multi good_name" style="font-size: 14px;">
+                    {{v.goodsName}}
+                </div>
+
+                <div class="ui-row ui-txt-line-height-30 ui-margin-t">
+                    <span class="good_price" data-price="333" style="color:#FF7400">integral: {{v.exchangePoint}}</span>
+                    <span class="f_right good_count" data-count="12">x {{v.goodsNum}}</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!--<div class="ui-row ui-txt-line-height-50">-->
+            <!--<span class="good_count" data-count="2">共{{v.goodsNum}}件商品</span>-->
+					<!--<span class="f_right total_money" data-price="7000">-->
+							<!--total：{{v.exchangePoint}}-->
+					<!--</span>-->
+        <!--</div>-->
+    </li>
+    {{/each}}
+</script>

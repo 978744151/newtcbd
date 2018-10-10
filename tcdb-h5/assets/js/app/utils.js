@@ -693,6 +693,14 @@ define(
 			}
 
 		};
+		var muiScroll = function () {
+			return mui('.mui-scroll-wrapper').scroll({
+				deceleration: 0.0006, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+				indicators: false,//去除滚动条
+				start:98 + '%'
+			});
+
+		}
 		//var lan = function (country){
 		//	var language = 10
 		//	if(country == 1){
@@ -894,7 +902,8 @@ define(
 			jsonParseParam: jsonParseParam,
 			getUrl: getUrl,
 			clearTab: clearTab,
-			getStor: getStor
+			getStor: getStor,
+			muiScroll:muiScroll
 			//lan:lan
 		};
 

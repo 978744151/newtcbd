@@ -48,7 +48,8 @@ requirejs.config({
 		mobiscroll: 'libs/mobiscroll',
 		fly: 'libs/fly',
 		mui:'libs/mui.min',
-		artTemplate:'libs/template-web'
+		artTemplate:'libs/template-web',
+        cookie:"libs/jquery.cookie"
 	},
 	shim: {
 		'underscore': {
@@ -108,7 +109,11 @@ requirejs.config({
 		'artTemplate': {
 			deps: ['zepto'],
 			exports: 'artTemplate'
-		}
+		},
+        'cookie': {
+            deps: ['zepto'],
+            exports: 'cookie'
+        },
 	},
 	urlArgs: "v=" + window.assetVersion
 });
@@ -206,6 +211,20 @@ function lan(country){
                 opportunity:'rare opportunity',//机会难得
                 Redeem:'Redeem gift',//兑换好礼
                 RechargeMore:'Recharge 10 baht, you can get 1 credit, the points can be used to redeem the beautiful gifts of the points mall in the platform.',//充值10泰铢，即可获得1积分，积分可以用来兑换平台中积分商城的精美礼品
+            },
+            shoppingCart:{
+                strolling:"go strolling",//去逛逛
+                emptyCart:"empty cart",//你还没有清单,
+                topSearch:"top search",//热门搜索
+                cart:"cart",//清单 购物车
+                need:"need",//总需
+                remaining:"remaining",//剩余
+                people:"people_amount",//人次
+                sum:"sum",//共
+                goods:"goods",//件商品
+                total:"total",//总计
+                ju:"the target is 10 people, the remaining is 2",//:"",//总需10 人次，剩余2 the target is 10 people, the remaining is 2
+                edit:"edit",
             }
         }
     }
@@ -296,6 +315,21 @@ function lan(country){
                 opportunity:'โอกาสที่หาได้ยาก',//机会难得
                 Redeem:'แลกของขวัญเยี่ยม',//兑换好礼
                 RechargeMore:'เติมเงิน 10 บาทก็ได้รับปริพันธ์ 1    ปริพันธ์แลกของขวัญสวยงามที่ศูนย์การค้าปริพันธ์ชึ่งอยู่ในแพลตฟอร์มได้',//充值10泰铢，即可获得1积分，积分可以用来兑换平台中积分商城的精美礼品
+            },
+            shoppingCart:{
+                strolling:"ไปช็อปปิ้ง",//去逛逛
+                emptyCart:"คุณยังไม่มีรายการ",//你还没有清单,
+                topSearch:"การค้นหายอดนิยม",//热门搜索，
+                cart:"รายการ",//清单 购物车
+                need:"ต้องการ",//总需
+                remaining:"ที่เหลือ",//剩余
+                people:"คน",//人次
+                sum:"รวมที",//共
+                jian:"ชิ้น",
+                goods:"สินค้า ",//件商品
+                total:"ตรวมมี",//总计
+                ju:"ต้องการ 总需คน 20 เหลือ人次  คน剩余 10 คน人次",//:"",//总需10 人次，剩余2 the target is 10 people, the remaining is 2
+                edit:"แก้ไข",
             }
         }
     return language
