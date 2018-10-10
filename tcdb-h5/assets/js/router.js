@@ -549,9 +549,9 @@ define([
 		},
 		loadMyshare:function () {
 			utils.hideMenu();
-			requirejs(['views/Myshare'], function (Myshare) {
+			requirejs(['views/myshare'], function (myshare) {
 				if (!Views.View) {
-					Views.myshareView = new Myshare();
+					Views.myshareView = new myshare();
 				}
 				Views.myshareView.render();
 			});

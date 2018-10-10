@@ -9,9 +9,9 @@
 
 window.assetVersionion = "1.0.2";
 
-window.API_URL =  "http://localhost:801/tcdb";
+window.API_URL =  "https://h5.51dianliang.com/tcdb-api/";
 
-window.ctx =  "http://localhost:801";
+window.ctx =  "https://h5.51dianliang.com";
 
 
 window.imageDomain  = "http://image.hexianhui.cn";

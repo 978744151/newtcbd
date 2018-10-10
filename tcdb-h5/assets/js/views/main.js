@@ -16,25 +16,10 @@ define(['zepto', 'cookie','underscore', 'backbone',
 		var droploadType;
 		var $dropload;
 		var $directionFlag;
-		var flag;
-		var time = date()
-		var days = localStorage.getItem("day") ? localStorage.getItem("day") : null
-		if(days && days == time){
-			flag = true
-		}else if(days && days != time){
-			flag = false
-			localStorage.setItem("day" , time)
-		}else{
-			flag = false
-			localStorage.setItem("day" , time)
-		}
-		function date(){
-			var date = new Date();
-			var year = date.getFullYear() // 年
-			var month = date.getMonth() + 1; // 月
-			var day  = date.getDate(); // 日
-			return year +"-" + month + "-" + day
-		}
+
+
+		var lans = localStorage.getItem("lan") ? localStorage.getItem("lan") : window.location.href = window.ctx + '/language.html';
+
 		var mainView = Backbone.View.extend({
 			el: $page,
 			render: function () {
@@ -143,7 +128,28 @@ define(['zepto', 'cookie','underscore', 'backbone',
 			},
 
 		});
-
+		var flag;
+		function dates(){
+			var days = localStorage.getItem("day") ? localStorage.getItem("day") : null;
+			console.log(flag)
+			var time = date();
+			if(days && days == time){
+				flag = true;
+			}else if(days && days != time){
+				flag = false;
+				localStorage.setItem("day" , time)
+			}else{
+				flag = false;
+				localStorage.setItem("day" , time);
+			}
+			function date(){
+				var date = new Date();
+				var year = date.getFullYear() // 年
+				var month = date.getMonth() + 1; // 月
+				var day  = date.getDate(); // 日
+				return year +"-" + month + "-" + day;
+			}
+		}
 		var initEvent = function () {
 			var type = utils.getStor()
 			$('.hot').html(lan(type).mainPage.Popular)
@@ -263,6 +269,7 @@ define(['zepto', 'cookie','underscore', 'backbone',
 		var initData = function () {
 			Api.getHomeData(null,
 				function (successData) {
+					dates()
 					console.log(successData)
 					var template = _.template($("#main_item").html());
 					$(".main_contain").empty().append(template(successData.result));
@@ -285,7 +292,7 @@ define(['zepto', 'cookie','underscore', 'backbone',
 						console.log(1)
 						console.log(successData.result.popup.link);
 						var link = successData.result.popup.link
-						window.locationtop.href = link
+						window.location.href = link
 					})
 					$('body').on('click', ".index_box_close img",function () {
 						$('.index_yy').hide()

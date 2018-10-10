@@ -89,7 +89,11 @@ define(
 								//storage.remove("loginSuccess");
 								//状态为20002时，无效的accessToken
 								//刷新接口访问凭证access_token 不报错
-
+								storage.remove("loginSuccess");
+								//window.location.href = window.LOGIN_REDIRECT_URL
+								storage.set("loginSuccessBack", window.location.hash);
+								//window.location.href = window.ctx + "/login.html";
+								window.location.href = window.LOGIN_REDIRECT_URL;
 							} else if (data.err_code == 20003) {
 								//无效的refresh_token 重新登陆
 								//window.location.href = window.LOGIN_REDIRECT_URL

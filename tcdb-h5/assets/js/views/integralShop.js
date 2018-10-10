@@ -2,11 +2,11 @@ define(
     [
         'zepto', 'jquery','mui','artTemplate', 'underscore', 'backbone', 'urlGroup',
         'swiper', 'echo', 'app/api', 'app/basket',
-        'app/utils', 'app/scroll',
+        'app/utils','app/refreshtoken', 'app/scroll',
         'text!templates/integralShop.html'
     ],
 
-    function($, Jquery,mui, artTemplate,_, Backbone, UrlGroup, Swiper, echo, Api, basket, utils, scroll,
+    function($, Jquery,mui, artTemplate,_, Backbone, UrlGroup, Swiper, echo, Api, basket, utils,token, scroll,
              integralShop) {
 
         var $page = $("#integralShop-page");
@@ -18,19 +18,23 @@ define(
             render: function () {
                 utils.showPage($page, function () {
                     $page.empty().append(integralShop);
-                    console.log('riset');
                     params = {  page:1 ,page_size : 8 }
                     flag=null
                     thisgoods = []
-                    shopScroll()
                     renders(params)
                 });
             },
         })
         function renders(params){
-            Api.getIntegralShop(params, function (data) {
-                //console.log(params);
-                var data  = data.result;
+            Api.getIntegralShop(params, function (successData) {
+                console.log(successData);
+                //if( data.err_code == 20002 ){
+                //    console.log(1111)
+                //    Token.getRefeshToken(1,function(data){
+                //
+                //    })
+                //}
+                var data  = successData.result;
                 if(thisgoods != [] && params.page != 1){
                     thisgoods = thisgoods.concat(data.data.list);
                 }else{
@@ -50,8 +54,10 @@ define(
                     params.page++
                 }
                 utils.muiScroll()
+                shopScroll()
             })
         }
+
         function shopScroll(){
             for(var i = mui.hooks.inits.length-1,item;i>=0;i--){
                 item=mui.hooks.inits[i];

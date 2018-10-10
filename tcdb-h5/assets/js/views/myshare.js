@@ -75,7 +75,7 @@ define(
             Api.getShares(
                 param,
                 function (successData) {
-
+                    console.log(successData);
                     if (successData.result.data.length > 0) {
 
                         var template = _.template($shareOrderItem.html());
