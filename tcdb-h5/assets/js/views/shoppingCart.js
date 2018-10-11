@@ -161,7 +161,6 @@ define(
             //增加数量 加1
             increaseNumber: function(e){
 
-                e.preventDefault()
 
             	$this= $(e.currentTarget);
 
@@ -179,7 +178,6 @@ define(
             //减少数量 减1
             decreaseNumber: function(e){
 
-                e.preventDefault()
 
             	$this= $(e.currentTarget);
 

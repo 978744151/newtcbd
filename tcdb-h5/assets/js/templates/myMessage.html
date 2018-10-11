@@ -3,9 +3,9 @@
 
 <div class="my-message-css">
 	<header class="ui-header ui-header-css ui-header-positive ui-border-b">
-		<img src="../../../assets/image/ic_back@3x.png" alt="" onclick="history.back();" width=24px height=24px;class="ic_back_return">
+		<img src="../../../assets/image/ic_back@3x.png" alt="" onclick="history.back();" class="ic_back_return" width=24px height=24px;  >
 			<!--<i class="ui-icon-return category-good-back" onclick="history.back();"></i>-->
-			<h1 class="ui-txt-default name">我的消息</h1>
+			<h1 class="ui-txt-default name ui-txt-default name ui_header_name">我的消息</h1>
 
 	</header>
 
@@ -34,7 +34,7 @@
 		<li class="ui-margin-b message_item ui-font-css">
 
 				<div class="ui-txt-center ui-txt-line-height-30 f14 ui-txt-muted message_time" >
-						<%=item.create_time%>
+						<span><%=item.create_time%></span>
 				</div>
 
 				<div class="bg_white ui-all-whitespace message_info">

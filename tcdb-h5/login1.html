@@ -45,7 +45,7 @@
                 <span></span>
             </div>
             <div class="loginDl">
-                <img src="assets/image/ic_dline@3x.png" alt="">
+                <img src="assets/image/ic_dline@3x.png" alt="" onclick= "line()">
                 <img src="assets/image/ic_dfb@3x.png" alt="" scope="public_profile,email" onclick="checkLoginState();">
                 <img src="assets/image/ic_dtt@3x.png" alt="">
             </div>
@@ -58,6 +58,10 @@
 </section>
 <script src="assets/js/libs/zepto.min1.js"></script>
 <script type="text/javascript">
+    function line(){
+        window.location.href  = 'https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1613741380&redirect_uri=https://h5.51dianliang.com&state=12345abcde&scope=openid';
+    }
+
      window.fbAsyncInit = function() {
         　　FB.init({
             　　appId :'173756896837472',

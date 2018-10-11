@@ -1,7 +1,7 @@
-/*body,html{*/
-	/*width: 100%;*/
-	/*height: 100%;*/
-/*}*/
+body,html{
+	width: 100%;
+	height: 100%;
+}
 .index_yy{
 	width: 100%;
 	height: 100%;
@@ -101,7 +101,16 @@
 	background: url("../image/index/ico_index_message@2x.png") no-repeat;
 	background-size: 100% 100%;
 }
-
+.icons_message {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	width: 45px;
+	height: 45px;
+	background: url("../image/index/ico_index_message@2x.png") no-repeat;
+	background-size: 100% 100%;
+	z-index: 9;
+}
 .mxep_block {
 	margin-bottom: 10px;
 }
@@ -461,7 +470,6 @@
 	border-radius: 6px;
 	padding: 0;
 }
-* { touch-action: none; }
 .main-css .indexCate li{
 	height: 91px;
 	padding-top: 10px;
@@ -498,10 +506,10 @@
 	background: #FF7400;
 	color:white
 }
-/*#main-page{*/
-	/*width: 100%;*/
-	/*height: 100%;*/
-/*}*/
+#main-page{
+	width: 100%;
+	height: 100%;
+}
 .main-css section.mxep_block .ui-grid-trisect-img {
 	padding-top: 64%;
 }
@@ -638,10 +646,11 @@
 	background-size: 100% 100%;
 	position: absolute;
 	left: 15px;
-	top: 15px;
+	top: 10px;
 	/*width: 24px;*/
-	height: 34px;
+	height: 25px;
 	z-index: 10;
+	width: 25px;
 }
 .ui-header .icon_shopping_cart:before {
 	background: url("../../assets/image/img_details_shopping@2x.png");

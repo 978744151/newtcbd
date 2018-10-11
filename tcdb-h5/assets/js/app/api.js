@@ -443,6 +443,19 @@ define(
 			IntegralShopPay:function(params, success, error){
 				$.ajax({
 					url: window.API_URL + "/exchangeGoods/exchange?access_token=" + utils.storage.get("access_token"),
+					type: "get",
+					data:params.formDatas,
+					success: function (data) {
+						typeof success == 'function' && success(data);
+					},
+					onError: function (data) {
+						typeof error == 'function' && error(data);
+					}
+				});
+			},
+			getPost: function (params,success, error) {
+				$.ajax({
+					url: "https://api.line.me/oauth2/v2.1/token",
 					type: "post",
 					data:params.formDatas,
 					success: function (data) {
@@ -2170,7 +2183,8 @@ define(
 						typeof error == 'function' && error(data);
 					}
 				});
-			}
+			},
+
 
 		};
 

@@ -7,7 +7,6 @@ define(['zepto', 'cookie','underscore', 'backbone',
 	function ($,cookie, _, Backbone, Swiper, echo, Api, _dropload, utils, scroll, basket, mainTemplate) {
 
 
-
 		var $page = $("#main-page");
 		var imageRenderToken = null;
 		var $pageNum; //页码
@@ -59,7 +58,7 @@ define(['zepto', 'cookie','underscore', 'backbone',
 				"tap .announced_good_list li": "duobaoGoodInfo",
 
 				//消息 中奖提醒 myMessage
-				"tap .icon_message": "myMessage",
+				"tap .icons_message": "myMessage",
 
 				"tap .to_shopping_cart":"shoppingCart",
 
@@ -128,6 +127,40 @@ define(['zepto', 'cookie','underscore', 'backbone',
 			},
 
 		});
+
+//获取地址栏中所有的参数
+		getParamObj()
+		 function getParamObj() {
+			var obj = {};
+			var search = location.search;
+			search = search.slice(1);
+			search = decodeURI(search)
+			//console.log(search)
+			var arr = search.split("&");
+			for (var i = 0; i < arr.length; i++) {
+				var key = arr[i].split("=")[0];
+				var value = decodeURI(arr[i].split("=")[1]);
+				obj[key] = value;
+			}
+			 console.log(obj);
+			 urlPost(obj)
+			 return obj;
+		}
+		function urlPost(obj){
+			var formDatas ={
+					grant_type : "authorization_code",
+					code : obj.code,
+					redirect_uri: "https://h5.51dianliang.com",
+					client_id :"1613741380",
+					client_secret : "6505db588c1bbd7a781632f199560da6",
+		}
+			console.log(formDatas);
+			var params = {formDatas:formDatas}
+			console.log(1)
+			Api.getPost(params,function (successData) {
+				console.log(successData);
+			})
+		}
 		var flag;
 		function dates(){
 			var days = localStorage.getItem("day") ? localStorage.getItem("day") : null;

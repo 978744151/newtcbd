@@ -68,7 +68,6 @@ define(['zepto', 'underscore', 'backbone',
 			},
 
 			saveAddresses: function (e) {
-				e.preventDefault();
 				//验证信息
 				if (!verify())
 					return;
